@@ -1,0 +1,440 @@
+/*BODY*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*HEADER*/
+header {
+    background-image: linear-gradient(to top, #2c2c2c, rgb(75,75,75));
+    padding-bottom: 5px;
+}
+
+.top-header {
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 8px;
+}
+
+.search-bar {
+    order: 1;
+}
+
+.search-bar button, .search-bar input {
+    /* background-color: #fa4500; */
+    /* color: white; */
+   /* box-shadow: 0 0 5px #fff ; */ 
+    border: none;
+    font-weight: normal;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.search-bar button {
+    background-color: #fa4500;
+    color: white;
+}
+
+
+    /*LOGO*/
+
+header .logo {
+    width: 30vw;
+}
+
+header .logo img {
+    width: 100%;
+}
+
+.top-navbar {
+    display: none;
+}
+
+.sign-in {
+    display:none;
+}
+
+.down-navbar {
+    display: none;
+}
+
+    /*BURGER MENU*/
+
+label.burger-menu1 i {
+    font-size: 20px;
+    padding: 5px;
+    color: white;
+}
+
+label.burger-menu1 {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fa4500;
+    border-radius: 20%;
+    box-shadow: 0 0 5px #fff;
+}
+
+input.burger-check {
+    opacity: 0;
+}
+
+div.burger-menu {
+    position: relative;
+    user-select: none;
+}
+
+div.burger-menu a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+div.burger-menu a:hover {
+    color:#00acee;
+}
+
+div.burger-menu ul.burger-options {
+    position:absolute;
+    padding: 20px;
+    background-image: linear-gradient(to bottom, #2c2c2c, rgb(75,75,75));
+    list-style-type: none;
+    top: 100%;
+    left:0;
+    right:0;
+    transform: translate(0 , -300%);
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+div.burger-menu .burger-options li {
+    padding: 5px 0;
+    font-size: 15px;
+    text-align: center;
+}
+
+.burger-menu input:checked ~ ul{
+    transform: none;
+    opacity: 0.96;
+}
+
+/*MAIN*/
+
+main {
+    background-color: #ebeef1;
+    padding-bottom: 20px;
+}
+
+.nosotros-header {
+    width: 100vw;
+    position: relative;
+}
+
+.nosotros-header img {
+    width: 100%;
+}
+
+.nosotros-header h2 {
+    position: absolute;
+    left: 2%;
+    top: 15%;
+    font-size: 14px;
+    width: 50%;
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+section.nosotros {
+    width: 90%;
+    max-width: 900px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius:10px;
+    color: rgb(102, 101, 101);
+}
+
+section.nosotros article h4 {
+    color: #fa4500;
+    margin-bottom: 10px;
+}
+
+section.nosotros article a {
+    color: #00FF00;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+section.nosotros article p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+section.nosotros img {
+    width: 100%;
+}
+
+section.nosotros .nosotros-slogan {
+    width: 75%;
+    text-align: center;
+    margin: 10px auto 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 15px;
+    color: black;
+}
+
+section.nosotros .nosotros-grupo {
+    text-align: center;
+    padding: 15px 0;
+    color: black;
+}
+
+/*FOOTER*/
+
+footer {
+    border-top: 1px solid black;
+    background-color: rgb(230, 230, 230);
+}
+
+.social-media h5 {
+    font-family: sans-serif;
+    font-size:25px;
+    letter-spacing: 4px;
+    text-align: center;
+    font-weight: normal;
+    padding: 20px 0 20px 0;
+    color:#555;
+}
+
+.social-media-icon {
+    text-align: center;
+    padding-bottom: 15px;
+    font-size: 30px;
+}
+
+.social-media-icon i {
+    color:#777;
+    margin: 10px;
+    padding: 5px;
+    transition: all 0.3s;
+}
+
+.social-media-icon i.fa-brands.fa-facebook:hover {
+    text-shadow: 0 0 10px rgb(158, 158, 255);
+    color:#3b5998;
+}
+
+.social-media-icon i.fa-brands.fa-twitter:hover {
+    text-shadow: 0 0 10px #24b8f2;
+    color: #00acee;
+}
+
+.social-media-icon i.fa-brands.fa-instagram:hover {
+    text-shadow: 0 0 10px #f35d57;
+    color: #f14843;
+}
+
+.social-media-icon i.fa-brands.fa-youtube:hover {
+    text-shadow: 0 0 10px rgb(255, 98, 98);
+    color: #f00;
+}
+
+.top-footer {
+    /* background-color: #2c2c2c; */
+    background-image: linear-gradient(to bottom, #2c2c2c, rgb(75,75,75));
+    /* color: #fa4500; */
+    color: white;
+    padding: 10px;
+}
+
+.bottom-footer {
+    border-top: 0px solid white;
+    padding: 10px;
+    background-color: rgb(75,75,75);
+    color: white;
+}
+
+.top-footer-section-bicimundo, .top-footer-section-links, .top-footer-section-cuenta {
+    display: none;
+}
+
+.top-footer-section-contacto {
+    text-align: center;
+}
+
+.top-footer h4 {
+    /* color:black; */
+    color: #fa4500;
+    /* text-shadow: 0 0 5px #fff; */
+}
+
+.top-footer-section-contacto ul {
+    margin-top: 5px;
+}
+
+.top-footer li {
+    font-size: 14px;
+    list-style-type: none;
+}
+
+.top-footer li i {
+    margin-right: 3px;
+    color:black;
+    text-shadow: 0 0 5px #fff;
+}
+
+.copyright-1 {
+    border-top: 1px solid white;
+    font-size: 14px;
+}
+
+.copyright-2 {
+    color: rgb(118, 187, 255);
+    font-size: 12px;
+}
+
+.copyright-3 {
+    font-size: 12px;
+}
+
+/*MEDIA QUERIES*/
+
+@media (min-width: 481px) {
+
+    /*HEADER*/
+    header .logo {
+        width: 20%;
+    }
+
+    .sign-in {
+        display:block;
+        order: 2;
+        text-align: center;
+        font-size: 25px;
+        text-shadow: 0 0 5px #fff;
+    }
+
+    .sign-in a {
+        color: #fa4500;
+        margin-right:10px; 
+        text-decoration: none;   
+    }
+
+    .sign-in a.logout {
+        font-size: 12px;
+    }
+
+    .search-bar {
+        width:38%;
+        text-align: center;
+    }
+
+    .search-bar input {
+        width: 85%
+    }
+
+    div.burger-menu {
+        display:none;
+    }
+    
+    .down-navbar {
+        display: block;
+    }
+
+    .down-navbar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        list-style-type: none;
+    }
+
+    .down-navbar li a {
+        text-decoration: none;
+        color: #fa4500;
+        font-size: 14px;
+    }
+
+    .down-navbar li a:hover {
+        font-weight: bold;
+    }
+
+}
+
+
+@media (min-width: 960px) {
+
+    /*MAIN*/
+
+    .nosotros-header h2 {
+        font-size: 35px;
+        text-shadow: 0 0 10px rgba(0, 0, 0);
+    }    
+
+    /*HEADER*/
+
+    .sign-in {
+        display:none;
+    }
+    
+    .top-navbar {
+        display: block;
+        width: 31%;
+    }
+
+    .top-navbar ul {
+        display:flex;
+        justify-content: flex-end;
+        list-style-type: none;
+    }
+
+    .top-navbar li a {
+        text-decoration: none;
+        /* color: #fa4500; */
+        color:white;
+        margin: 0 10px;
+    }
+    
+    .search-bar {
+        order:0;
+        width: 31%;
+        text-align: left;
+    }
+
+    header .logo {
+        width: 15%;
+    }
+
+    /*FOOTER*/
+    
+    .top-footer-section-bicimundo, .top-footer-section-links, .top-footer-section-cuenta {
+        display: block;
+    }
+
+    .top-footer {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 20px;
+    }
+
+    .top-footer a {
+        text-decoration: none;
+        color:white;
+    }
+
+    .top-footer h4 {
+        border-bottom: 1px solid grey;
+    }
+
+    .top-footer-section-contacto {
+        text-align: left;
+    }
+}

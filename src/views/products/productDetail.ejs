@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %> 
+    <link rel="stylesheet" href="/css/productDetail-style.css" type="text/css" >
+    <title>Document</title>
+</head>
+<%- include('../partials/header.ejs') %> 
+<body>
+    <main>
+        <section class="detail-container">
+            <div class="detail-column-1">
+                <div class="main-image">
+                    <img src="/images/<%= product.image[0] %>" alt="Imagen detalle producto">
+                </div>
+                <div class="secondary-images"> 
+                    <img src="/images/<%= product.image[1] || "bicicletaRodado26venzoSkyline2.jpg" %>" alt="Imagen de producto">
+                    <img src="/images/<%= product.image[2] || "bicicletaRodado26venzoSkyline2.jpg" %>" alt="Imagen de producto">
+                    <img src="/images/<%= product.image[3] || "bicicletaRodado26venzoSkyline2.jpg" %>" alt="Imagen de Producto">
+                </div>
+                <p class="detail-footer">Garantía de 12 meses</p>
+            </div>
+            <div class="detail-column-2">
+                <h2>Descripción</h2>
+                <hr>
+                <h3 class="detail-modelo"><%= product.description %> </h3>
+                <p class="detail-description">
+                    Especificaciones:<br>
+                        Marca: <%= product.brand %>.<br>
+                        Modelo:<%= product.model %>.<br>
+                        Rodado: <%= product.rolled %>".<br>
+                        Cuadro: <%= product.framed %>.<br>
+                        Pata de cambio: <%= product.shifter %>.<br>
+                        Frenos: <%= product.brakes %>.<br>
+                        Horquillas de suspension:<%= product.suspension %><br>
+                </p>
+                <p class="detail-price">Precio: $ <% 
+                    let realPrice = product.discount ? product.price * (1-product.discount/100) : product.price;
+                    realPrice = realPrice.toFixed(0);
+                    realPrice = toThousand(realPrice);
+                %>  <%= realPrice %> </p>
+                <a href="/usuarios/carrito">
+                    <button class="detail-add-cart">Agregar al carrito <i class="fa-solid fa-cart-shopping"></i></button>
+                </a>
+                <p class="detail-send-free">Envio Gratis <i class="fa-solid fa-truck-arrow-right"></i></p>
+                <div class="admin-buttons">
+                <a href="/productos/editar/<%= product.id %> ">
+                    <button class="edit-button">Editar <i class="fa-solid fa-file-pen"></i></i></button>
+                </a>
+                <form class="delete-form" action="/productos/<%= product.id %>?_method=DELETE" method="POST">
+                    <button class="delete-button" type="submit">Eliminar</button>
+                </form>
+                </div>
+            </div>
+        </section>
+        <section class="paid-options">
+            <img src="/images/mediospago.jpg" alt="Imagen medios de pago">
+        </section>
+    </main> 
+    <%- include('../partials/footer.ejs') %> 
+</body>
+
+</html>

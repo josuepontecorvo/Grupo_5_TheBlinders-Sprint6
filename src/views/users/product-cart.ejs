@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %> 
+    <link rel="stylesheet" href="/css/cart-style.css" type="text/css">
+    <title>Carrito</title>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %> 
+    <main>
+        <section class="cart">
+            <h2>Tu carrito<i class="fa-solid fa-cart-shopping"></i></h2>
+            <div class="cart-table-container">
+                <table class="cart-table">
+                    <thead>    
+                        <tr>
+                            <td class="cart-table-image">Imagen</td>
+                            <td class="cart-table-description">Producto</td>
+                            <td class="cart-table-price">Precio</td>
+                            <td class="cart-table-quantity">Cantidad</td>
+                            <td class="cart-table-total">Total</td>
+                            <td class="cart-table-delete"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cart-table-image"><img src="/images/bicicletaRodado29olmoWish1.jpg" alt="Imagen de producto"></td>
+                            <td class="cart-table-description"><p>BICICLETA MTB RODADO 29 OLMO WISH 290 ENTRY</p></td>
+                            <td class="cart-table-price">$ 59.087</td>
+                            <td class="cart-table-quantity"><input type="number" class="product-quantity" name="product-quantity" placeholder="2"></td>
+                            <td class="cart-table-total">$ 118.174</td>
+                            <td class="cart-table-delete"><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td class="cart-table-image"><img src="/images/cajaDeHerramientasSuperB.jpg" alt="Imagen de producto"></td>
+                            <td class="cart-table-description"><p>CAJA DE HERRAMIENTAS SUPER B TBA500 27 PIEZAS</p></td>
+                            <td class="cart-table-price">$ 19.720</td>
+                            <td class="cart-table-quantity"><input type="number" class="product-quantity" name="product-quantity" placeholder="2"></td>
+                            <td class="cart-table-total">$ 39440</td>
+                            <td class="cart-table-delete"><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td class="cart-table-image"><img src="/images/luzTraseraVanHalen.jpg" alt="Imagen de producto"></td>
+                            <td class="cart-table-description"><p>LUZ TRASERA VAN HALEN VAN040 120 LM AUTOMATICA</p></td>
+                            <td class="cart-table-price">$ $3.570</td>
+                            <td class="cart-table-quantity"><input type="number" class="product-quantity" name="product-quantity" placeholder="5"></td>
+                            <td class="cart-table-total">$ 17850</td>
+                            <td class="cart-table-delete"><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                        </tr>
+                    </tbody>    
+                </table>
+            </div>
+            <div class="cart-bottom">
+                <div class="total-price-container">
+                    <div class="total-price">
+                        <p> Precio total : $ 175464</p>
+                    </div>
+                </div>
+                <div class="return">
+                    <p><a href="/"><i class="fa-solid fa-angle-left"></i> Seguir comprando</a></p>
+                </div>
+                <div class="confirm-cart">
+                    <p><a href="#">Confirmar</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('../partials/footer.ejs') %> 
+</body>
+</html>

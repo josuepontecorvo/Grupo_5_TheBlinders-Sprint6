@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %> 
+    <link rel="stylesheet" href="/css/userDetail-style.css" type="text/css" >
+    <title>BiciMundo - Usuario</title>
+</head>
+<%- include('../partials/header.ejs') %> 
+<body>
+    <main>
+        <section class="detail-container">
+            <div class="detail-column-1">
+                <div class="main-image">
+                    <% 
+                        let url = user.profileimg
+                        if (url.indexOf('http') != -1) { 
+                    %>
+                        <img src="<%= user.profileimg %>" alt="image-destacados">
+                    <% } else { %>
+                        <img src="/images/users/<%= user.profileimg[0] %> " alt="image-destacados">
+                    <% } %>
+                </div>
+            </div>
+            <div class="detail-column-2">
+                <div>
+                    <h2>Descripción</h2>
+                    <hr>
+                    <h3 class="detail-modelo"><%= user.firstname + ' ' + user.lastname %> </h3>
+                    <p class="detail-description">
+                    Información:<br>
+                            Fecha de Nacimiento: <%= user.birthdate %>.<br>
+                            Email: <%= user.email %>.<br>
+                            Contraseña: ********.<br>
+                            Telefono: <%= user.phonenumber %>.<br>
+                    </p>
+                </div>
+                <div class="admin-buttons">
+                <a href="/usuarios/editar/<%= user.id %> ">
+                    <button class="edit-button">Editar <i class="fa-solid fa-file-pen"></i></i></button>
+                </a>
+                <form class="delete-form" action="/usuarios/<%= user.id %>?_method=DELETE" method="POST">
+                    <button class="delete-button" type="submit">Eliminar</button>
+                </form>
+                </div>
+            </div>
+        </section>
+        
+    </main> 
+    <%- include('../partials/footer.ejs') %> 
+</body>
+
+</html>

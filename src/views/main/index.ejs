@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %> 
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <title>BiciMundo-Home</title>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %> 
+    <main>
+        <%- include('../partials/slider.ejs') %> 
+        <section class="destacados">
+            <h2 class="destacados-title">DESTACADOS</h2>
+            <div class="destacados-products">
+                <% highlight.forEach(product => { %>
+                    <%- include('../partials/article-product.ejs',{product,toThousand}) %> 
+                <% }) %>
+            </div>
+        </section>
+
+    </main>
+    <%- include('../partials/footer.ejs') %> 
+</body>
+</html>

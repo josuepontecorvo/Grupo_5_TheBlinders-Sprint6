@@ -1,0 +1,17 @@
+<article>
+    <a class="detalle" href="/productos/detalle/<%= product.id %> ">
+        <figure>
+            <img src="/images/<%= product.image[0] %> " alt="image-destacados">
+        </figure>
+        <h3 class="destacados-products-model"><%= product.description %> </h3>
+        <p class="destacados-products-price">$<% 
+            let realPrice = product.discount ? product.price * (1-product.discount/100) : product.price;
+            realPrice = realPrice.toFixed(0);
+            realPrice = toThousand(realPrice);
+        %>  <%= realPrice %> </p>
+        <p class="destacados-products-cart">
+            Agregar al carrito
+            <i class="fa-solid fa-cart-shopping"></i>
+        </p>
+    </a>
+</article>

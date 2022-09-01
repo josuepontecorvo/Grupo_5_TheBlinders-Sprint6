@@ -1,0 +1,114 @@
+<form action="/productos/create" method="POST" enctype="multipart/form-data" class="CRUD-form">
+    <div class="form-control">
+        <label class="input-label">Producto:</label>
+        <label class="radio-label" for="bicicletas"><input type="radio" name="product" value="bicicletas" id="bicicletas"
+            <%= locals.oldData && (oldData.product == 'bicicletas') ? "checked" : null %> > 
+            Bicicletas
+        </label>
+        <label class="radio-label" for="accesorios"><input type="radio" name="product" value="accesorios" id="accesorios"
+            <%= locals.oldData && (oldData.product == 'accesorios') ? "checked" : null %>>
+            Accesorios
+        </label>
+        <span class="feedback">
+            <%= locals.errors && errors.product ? errors.product.msg : null %> 
+        </span>
+    </div>
+    <diV class="form-control">
+        <label class="input-label" for="type">Tipo:</label>
+        <input type="text" name="type" placeholder="RUTA, MTB, casco,..." id="type" value="<%= locals.oldData && oldData.type %>">
+        <span class="feedback">
+            <%= locals.errors && errors.type ? errors.type.msg : null %> 
+        </span>
+    </diV>
+    <diV class="form-control">
+        <label class="input-label" for="description">Descripción:</label>
+        <input type="text" name="description" id="description" required value="<%= locals.oldData && oldData.description %>">
+        <span class="feedback">
+            <%= locals.errors && errors.description ? errors.description.msg : null %> 
+        </span>
+    </diV>
+    <div class="form-control">
+        <label class="input-label" for="product-image">Carga la foto del producto</label>
+        <input class="file" type="file" name="image" id="product-image"  accept=".jpg, .png" multiple>
+        <span class="feedback">
+            <%= locals.errors && errors.image ? errors.image.msg : null %> 
+        </span>
+    </div>
+    <div class="form-control">
+        <label class="input-label" for="price">Precio:</label>
+        <input type="number" name="price" id="price" required value="<%= locals.oldData && oldData.price %>" />
+        <span class="feedback">
+            <%= locals.errors && errors.price ? errors.price.msg : null %> 
+        </span>
+    </div>
+    <div class="form-control">
+        <label class="input-label" for="discount">Descuento:</label>
+        <input type="number" name="discount" id="discount" placeholder="0" value="<%= locals.oldData && oldData.discount %>"/>
+        <span class="feedback">
+            <%= locals.errors && errors.discount ? errors.discount.msg : null %> 
+        </span>
+    </div>
+    <diV class="form-control">
+        <label class="input-label" for="brand">Marca:</label>
+        <input type="text" name="brand" id="brand" value="<%= locals.oldData && oldData.brand %>">
+        <span class="feedback">
+            <%= locals.errors && errors.brand ? errors.brand.msg : null %> 
+        </span>
+    </diV>
+    <diV class="form-control">
+        <label class="input-label" for="model">Modelo:</label>
+        <input type="text" name="model" id="model" value="<%= locals.oldData && oldData.model %>">
+        <span class="feedback">
+            <%= locals.errors && errors.model ? errors.model.msg : null %> 
+        </span>
+    </diV>
+    <diV class="form-control">
+        <label class="input-label" for="size">Talle:</label>
+        <input type="text" name="size" id="size" value="<%= locals.oldData && oldData.size %>">
+        <span class="feedback"></span>
+    </diV>
+    <diV class="form-control">
+        <label class="input-label" for="color">Color:</label>
+        <input type="text" name="color" id="color" value="<%= locals.oldData && oldData.color %>" >
+        <span class="feedback"></span>
+    </diV>
+    <div class="form-control">
+        <label class="input-label" for="rolled">Rodado:</label>
+        <input type="number" name="rolled" id="rolled" value="<%= locals.oldData && oldData.rolled %>"/>
+        <span class="feedback"></span>
+    </div>
+    <diV class="form-control">
+        <label class="input-label" for="frame">Estructura:</label>
+        <input type="text" name="frame" id="frame" value="<%= locals.oldData && oldData.frame %>">
+        <span class="feedback"></span>
+    </diV>
+    <diV class="form-control">
+        <label class="input-label" for="shifter">Cambios:</label>
+        <input type="text" name="shifter" id="shifter" value="<%= locals.oldData && oldData.shifter %>">
+        <span class="feedback"></span>
+    </diV>
+    <diV class="form-control">
+        <label class="input-label" for="brakes">Frenos:</label>
+        <input type="text" name="brakes" id="brakes" value="<%= locals.oldData && oldData.brakes %>">
+        <span class="feedback"></span>
+    </diV>
+    <diV class="form-control">
+        <label class="input-label" for="suspension">Suspensión:</label>
+        <input type="text" name="suspension" id="suspension" value="<%= locals.oldData && oldData.suspension %>">
+        <span class="feedback"></span>
+    </diV>
+    <diV class="form-control">
+        <label class="input-label" for="cubiertas">Cubiertas:</label>
+        <input type="text" name="cubiertas" id="cubiertas" value="<%= locals.oldData && oldData.cubiertas %>">
+        <span class="feedback"></span>
+    </diV>
+    <diV class="form-control">
+        <label class="input-label" for="info">Info Adicional:</label>
+        <textarea name="info" id="info" cols="30" rows="10"><%= locals.oldData && oldData.info %></textarea>
+        <span class="feedback"></span>
+    </diV>
+    <div class="submit-form">
+        <button type="reset">Limpiar</button>    
+        <button type="submit">Confirmar</button>
+    </div>
+</form>

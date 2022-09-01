@@ -1,0 +1,158 @@
+[
+ {
+  "id": 1,
+  "firstname": "Leif",
+  "lastname": "Pachta",
+  "birthdate": "1996-08-15",
+  "email": "lpachta0@hubpages.com",
+  "password": "$2a$10$ZVzE54VmbGBu9H8Rhx5hw.09exz.thn49EKGblUWiC7TLfFGW09le",
+  "phonenumber": "5309101732",
+  "userTerms": "on",
+  "profileimg": [
+   "default-user.png"
+  ]
+ },
+ {
+  "id": 2,
+  "firstname": "Roanne",
+  "lastname": "Gwynn",
+  "birthdate": "2003-01-10",
+  "email": "rgwynn1@economist.com",
+  "password": "$2a$10$vHOREGK3wzCCFfFLa8e2eO2RTjp/8EgdbRQ192UWWD7x9v96mOnki",
+  "phonenumber": "7586675592",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-woman.png"
+  ]
+ },
+ {
+  "id": 3,
+  "firstname": "Meghan",
+  "lastname": "Rudeyeard",
+  "birthdate": "1980-06-07",
+  "email": "mrudeyeard2@wix.com",
+  "password": "$2a$10$nbzo8HmMkX91YkT//BD.i.OG/t2anyKDF80hzrl6H.rG1V7zBDU..",
+  "phonenumber": "6178815963",
+  "userTerms": "on",
+  "profileimg": [
+   "default-user.png"
+  ]
+ },
+ {
+  "id": 4,
+  "firstname": "Osbourn",
+  "lastname": "Wichard",
+  "birthdate": "1980-08-20",
+  "email": "owichard3@github.com",
+  "password": "$2a$10$GXgG0eTFoa7m3ftgQ7HLHu7g0YTu/H/82ck3TXWzcknjCKX97mRom",
+  "phonenumber": "8767142344",
+  "userTerms": "on",
+  "profileimg": [
+   "default-user.png"
+  ]
+ },
+ {
+  "id": 5,
+  "firstname": "Antonino",
+  "lastname": "Elcomb",
+  "birthdate": "2001-08-21",
+  "email": "aelcomb4@altervista.org",
+  "password": "$2a$10$rstDm17N7pwTHRfSR8Ytp.9QK8gAXS45bIUVaiS2RTNMq8w0XjhHO",
+  "phonenumber": "4048683944",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-man.png"
+  ]
+ },
+ {
+  "id": 6,
+  "firstname": "Rory",
+  "lastname": "Lobb",
+  "birthdate": "1982-08-30",
+  "email": "rlobb5@pen.io",
+  "password": "$2a$10$NrmgIFFEiTjEaA34v7D/TeZHyNWL46jZvVr1aK3kefYrxOvC.Lkbi",
+  "phonenumber": "6856028011",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-man.png"
+  ]
+ },
+ {
+  "id": 7,
+  "firstname": "Latrena",
+  "lastname": "Schout",
+  "birthdate": "1994-10-20",
+  "email": "lschout6@google.ru",
+  "password": "$2a$10$quk7bclPyc.NP786DdBeVuHkG2S84ftjB7.YZpFe937sEmB2Qd8O6",
+  "phonenumber": "6608809302",
+  "userTerms": "on",
+  "profileimg": [
+   "default-user.png"
+  ]
+ },
+ {
+  "id": 8,
+  "firstname": "Briano",
+  "lastname": "Leake",
+  "birthdate": "1982-10-13",
+  "email": "bleake7@washington.edu",
+  "password": "$2a$10$fWEM0vN22eqZwtXB5SX38uE.ELiLURLW/eAGnUiEvfYD/BL7FSK42",
+  "phonenumber": "1388740385",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-man.png"
+  ]
+ },
+ {
+  "id": 9,
+  "firstname": "Latashia",
+  "lastname": "Birtle",
+  "birthdate": "1997-06-03",
+  "email": "lbirtle8@etsy.com",
+  "password": "$2a$10$t8Q1gKjqfAgcQzpPM7WYwuYFonV7ryzpMOvtGP5OVkvOK/iuYIbWq",
+  "phonenumber": "9816660743",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-woman.png"
+  ]
+ },
+ {
+  "id": 10,
+  "firstname": "Lilly",
+  "lastname": "Hansmann",
+  "birthdate": "2000-02-20",
+  "email": "lhansmann9@wufoo.com",
+  "password": "$2a$10$JwtllpiQI.ejWEoD0SblEe0k6dFEk/WOoLd0FJjH9tfYIaTjSM0Em",
+  "phonenumber": "4754274536",
+  "userTerms": "on",
+  "profileimg": [
+   "avatar-woman.png"
+  ]
+ },
+ {
+  "firstname": "Equipo",
+  "lastname": "Grupo5",
+  "birthdate": "2022-05-01",
+  "email": "grupo5@mail.com",
+  "password": "$2a$10$.cuh0.8fmihboRLuU9EkkOhyRMG8tXNa3tilz8Uf8of0mFBeaEzU.",
+  "phonenumber": "",
+  "userTerms": "on",
+  "profileimg": [
+   "userGrupo5.jpg"
+  ],
+  "id": 11
+ },
+ {
+  "id": "12",
+  "firstname": "Admin",
+  "lastname": "Admin",
+  "birthdate": "2010-01-01",
+  "email": "admin@mail.com",
+  "password": "$2a$10$cfOb5YfUJiXXj2ue3na2JOACe0sZ.iSJqryYFA8i5RTrrB8MbFXhm",
+  "phonenumber": "",
+  "admin": "true",
+  "profileimg": [
+   "user-img-1660144856873.jpg"
+  ]
+ }
+]

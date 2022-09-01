@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %> 
+    <link rel="stylesheet" href="/css/register-style.css" type="text/css">
+    <title>Bici Mundo-Registro</title>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %> 
+    <main>
+        <div class="register">
+            <h2>CREA TU CUENTA</h2>
+            <form action="/usuarios/registro" method="POST" enctype="multipart/form-data" class="register-form">
+                <div class="user-image">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <label for="user-image">Carga tú foto de perfil</label>
+                    <input type="file" name="profileimg" id="user-image" style="visibility: hidden;" multiple accept=".jpg, .png, .jpeg" />
+                    <span class="feedback"> <%= locals.errors && errors.profileimg ? errors.profileimg.msg : null %>  </span>
+                </div>
+                <div class="fill-form">
+                    <diV class="user-name">
+                        <label for="id">Nombre:</label>
+                        <input type="text" name="firstname" placeholder="John" required id="name" minLength="2" value="<%= locals.oldData && oldData.firstname %>">
+                        <span class="feedback"> <%= locals.errors && errors.firstname ? errors.firstname.msg : null %> </span>
+                    </diV>
+                    <div class="user-last-name">
+                        <label for="last-name">Apellido:</label>
+                        <input type="text" name="lastname" placeholder="Doe" required id="last-name" minLength="2" value="<%= locals.oldData && oldData.lastname %>">
+                        <span class="feedback"> <%= locals.errors && errors.lastname ? errors.lastname.msg : null %> </span>
+                    </div>
+                    <div class="user-date-of-birth">
+                        <label for="date">Fecha de nacimiento:</label>
+                        <input type="date" name="birthdate" value="1987-01-25" required id="date" min="1900-01-01" max="2010-01-01" value="<%= locals.oldData && oldData.birthdate %>">
+                        <span class="feedback"> <%= locals.errors && errors.birthdate ? errors.birthdate.msg : null %> </span>
+                    </div>
+                    <div class="user-email">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" placeholder="johndow@mail.com" required id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="<%= locals.oldData && oldData.email %>">
+                        <span class="feedback"> <%= locals.errors && errors.email ? errors.email.msg : null %> </span>
+                    </div>
+                    <div class="user-password">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" placeholder="Password" required id="password" minLength="8">
+                        <span class="feedback"> <%= locals.errors && errors.password ? errors.password.msg : null %> </span>
+                    </div>
+                    <div class="user-confirm-password">
+                        <label for="confirm-password">Confirmar contraseña:</label>
+                        <input type="password" name="user-confirm-password" placeholder="Repeat password" required id="confirm-password" minLength="8">
+                        <span class="feedback"> <%= locals.errors && errors["user-confirm-password"] ? errors["user-confirm-password"].msg : null %> </span>
+                    </div>
+                    <div class="user-phone">
+                        <label for="phone">Telefono (opcional):</label>
+                        <input type="tel" name="phonenumber" placeholder="+54 911 5678 1234" id="phone" value="<%= locals.oldData && oldData.phonenumber %>">
+                        <span class="feedback"></span>
+                    </div>
+                    <div class="user-terms">
+                        <label class="register-term" for="terminos">
+                            Acepto Términos y Condiciones
+                            <input type="checkbox" name="userTerms" id="terminos" required>
+                        </label>
+                        <span class="feedback"> <%= locals.errors && errors['userTerms'] ? errors['userTerms'].msg : null %> </span>
+                    </div>
+                </div>
+                <div class="submit-form">
+                    <button type="reset">Limpiar</button>    
+                    <button type="submit">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs') %> 
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %> 
+    <link rel="stylesheet" href="/css/contacto-style.css">
+    <title>BiciMundo-Contacto</title>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %> 
+    <main>
+        <section class="contacto">
+            <h2 class="contacto-header"><span>Contactanos</span>, estamos para asesorarte</h2>
+            <article class="contacto-datos">
+                <p>Dejanos tu consulta y a la brevedad nos pondremos en contacto con vos.</p>
+                <p>También podes encontrarnos:</p>
+                <ul>
+                    <li><i class="fa-solid fa-phone"></i>4982-1111 / 4982-2222</li>
+                    <li><i class="fa-solid fa-comment-sms"></i>+5491156781234</li>
+                    <li><i class="fa-regular fa-envelope"></i>ventas@bicimundo.com</li>
+                    <li><i class="fa-solid fa-location-pin"></i>Av. Central 123, CABA, BA, Argentina</li>
+                    <li><i class="fa-regular fa-clock"></i>10hs a 18hs</li>
+                </ul>
+                <div class="contacto-social-media">
+                    <a href="https://es-la.facebook.com" target="_blanck"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://twitter.com/?lang=es" target="_blanck"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/" target="_blanck"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </article>
+            <div class="contact-form">
+                <form action="/" method="GET">
+                    <div>
+                        <label for="contact-name" class="form-label">Nombre y Apellido</label>
+                        <input type="text" id="contact-name" name="contactName" required minLenght="2">
+                        <span class="feedback"></span>
+                    </div>
+                    <div>
+                        <label for="contact-email" class="form-label">Email</label>
+                        <input type="email" id="contact-email" name="contactEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <span class="feedback"></span>
+                    </div>
+                    <div>
+                        <label for="contact-phone" class="form-label">Telefono</label>
+                        <input type="telephone" id="contact-phone" name="contactPhone">
+                        <span class="feedback"></span>
+                    </div>
+                    <div>
+                        <label for="contact-data" class="form-label">Consulta</label>
+                        <textarea name="contactData" id="contact-data" maxlength="400" cols="40" rows="10" placeholder="Contanos tu consulta (max. 400 caracteres)" required></textarea>
+                        <span class="feedback"></span>
+                    </div>
+                    <div class="contact-submit">
+                        <button type="submit">Enviar<i class="fa-solid fa-circle-chevron-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <%- include('../partials/footer.ejs') %> 
+  
+</body>
+</html>

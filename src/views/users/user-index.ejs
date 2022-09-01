@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %> 
+    <link rel="stylesheet" href="/css/user-style.css" type="text/css">
+    <title>BiciMundo-Usuarios</title>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %> 
+    <main>
+        <section class="destacados">
+            <h2 class="destacados-title">Listado de usuarios</h2>
+            <div class="destacados-products">
+                <% users.forEach(user => { %>
+                    <article>
+                        <a class="detalle" href="/usuarios/detalle/<%= user.id %> ">
+                            <figure>
+                                <% 
+                                    let url = user.profileimg
+                                    if (url.indexOf('http') != -1) { 
+                                %>
+                                    <img src="<%= user.profileimg[0] %>" alt="image-destacados">
+                                <% } else { %>
+                                    <img src="/images/users/<%= user.profileimg[0] %> " alt="image-destacados">
+                                <% } %>
+                            </figure>
+                            <h3 class="destacados-products-model"><%= user.firstname +" "+ user.lastname %></h3>
+                            <p class="destacados-products-price"><%= user.birthdate %> </p>
+                            <p class="destacados-products-cart">
+                                <%= user.email %> 
+                            </p>
+                        </a>
+                    </article>
+                <% }) %>
+            </div>
+        </section>
+
+    </main>
+    <%- include('../partials/footer.ejs') %> 
+</body>
+</html>

@@ -1,0 +1,54 @@
+<footer>
+    <section class="social-media">
+        <h5>SEGUINOS EN REDES SOCIALES</h5>
+        <div class="social-media-icon">
+            <a href="https://es-la.facebook.com" target="_blanck"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com/?lang=es" target="_blanck"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.instagram.com/" target="_blanck"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.youtube.com/" target="_blanck"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </section>
+    <div class="top-footer">
+        <section class="top-footer-section-bicimundo">
+            <h4>BiciMundo</h4>
+            <ul>
+                <li><a href="/">Home</a></li>
+            </ul>
+        </section>
+        <section class="top-footer-section-links">
+            <h4>Links</h4>
+            <ul>
+                <li><a href="/nosotros">Quienes somos</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/ayuda">Ayuda</a></li>
+            </ul>
+        </section>
+        <section class="top-footer-section-cuenta">
+            <h4>Cuenta</h4>
+            <ul>
+                <% if (locals.isLogged) { %>
+                    <li><a href="/usuarios/detalle/<%= isLogged.id %>">Mi Perfil</a></li>
+                    <li><a href="/usuarios/logout">Cerrar Sesión</a></li>
+                <% } else { %>
+                    <li><a href="/usuarios/registro">Crear Cuenta</a></li>
+                    <li><a href="/usuarios/ingresar">Iniciar Sesión</a></li>
+                <% } %>
+            </ul>
+        </section>
+        <section class="top-footer-section-contacto">
+            <h4>Contacto</h4>
+            <ul>
+                <li><i class="fa-solid fa-phone"></i>4982-1111 / 4982-2222</li>
+                <li><i class="fa-solid fa-comment-sms"></i>+5491156781234</li>
+                <li><i class="fa-regular fa-envelope"></i>ventas@bicimundo.com</li>
+                <li><i class="fa-solid fa-location-pin"></i>Av. Central 123, CABA, BA, Argentina</li>
+                <li><i class="fa-regular fa-clock"></i>10hs a 18hs</li>
+            </ul>
+        </section>
+    </div>
+    <div class="bottom-footer">
+        <p class="copyright-1">Made by <strong>The blinders</strong> Argentina 2022</p> 
+        <p class="copyright-2"><i class="fa-regular fa-copyright"></i>Todos los derechos reservados</p>
+        <p class="copyright-3">Las fotos son a modo ilustrativo. La venta de cualquiera de los productos publicados está sujeta a la verificación de stock.</p>
+    </div>
+</footer>

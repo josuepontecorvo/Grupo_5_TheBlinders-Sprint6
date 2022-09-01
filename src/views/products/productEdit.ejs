@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %> 
+    <link rel="stylesheet" href="/css/productCRUD-style.css" type="text/css">
+    <title>BiciMundo-ABM Productos</title>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %> 
+    <main>
+        <div class="CRUD">
+            <h2>Editar Producto</h2>
+
+            <form action="/productos/<%= locals.product && product.id || idToUpdate %>?_method=PUT " method="POST" enctype="multipart/form-data" class="CRUD-form">
+                <div class="form-control">
+                    <label class="input-label">Producto:</label>
+                    <% if (locals.product && product.product == "bicicletas" || locals.oldData && (oldData.product == 'bicicletas')) { %>
+                        <label class="radio-label" for="bicicletas"><input type="radio" name="product" value="bicicletas" id="bicicletas" checked>Bicicletas</label>
+                        <label class="radio-label" for="accesorios"><input type="radio" name="product" value="accesorios" id="accesorios">Accesorios</label>
+                    <% } else { %>
+                        <label class="radio-label" for="bicicletas"><input type="radio" name="product" value="bicicletas" id="bicicletas">Bicicletas</label>
+                        <label class="radio-label" for="accesorios"><input type="radio" name="product" value="accesorios" id="accesorios" checked>Accesorios</label>
+                    <% } %>
+                    <span class="feedback"></span>
+                </div>
+                <diV class="form-control">
+                    <label class="input-label" for="type">Tipo:</label>
+                    <input type="text" name="type" placeholder="RUTA, MTB, casco,..." value="<%= locals.product && product.type || locals.oldData && oldData.type %>" id="type">
+                    <span class="feedback">
+                        <%= locals.errors && errors.type ? errors.type.msg : null %>
+                    </span>
+                </diV>
+                <diV class="form-control">
+                    <label class="input-label" for="description">Descripción:</label>
+                    <input type="text" name="description" id="description" value="<%= locals.product && product.description || locals.oldData && oldData.description %>" required>
+                    <span class="feedback">
+                        <%= locals.errors && errors.description ? errors.description.msg : null %>
+                    </span>
+                </diV>
+                <div class="form-control">
+                    <label class="input-label" for="product-image">Carga la foto del producto</label>
+                    <input class="file" type="file" name="image" id="product-image"  accept=".jpg, .png, .jpeg" multiple value="<%= locals.product && product.image %>"/>
+                    <span class="feedback">
+                        <%= locals.errors && errors.image ? errors.image.msg : null %> 
+                    </span>
+                </div>
+                <div class="form-control">
+                    <label class="input-label" for="price">Precio:</label>
+                    <input type="number" name="price" id="price" value="<%= locals.product && product.price || locals.oldData && oldData.price %>" required/>
+                    <span class="feedback">
+                        <%= locals.errors && errors.price ? errors.price.msg : null %>
+                    </span>
+                </div>
+                <div class="form-control">
+                    <label class="input-label" for="discount">Descuento:</label>
+                    <input type="number" name="discount" id="discount" placeholder="0" value="<%= locals.product && product.discount || locals.oldData && oldData.discount %>"/>
+                    <span class="feedback">
+                        <%= locals.errors && errors.discount ? errors.discount.msg : null %> 
+                    </span>
+                </div>
+                <diV class="form-control">
+                    <label class="input-label" for="brand">Marca:</label>
+                    <input type="text" name="brand" id="brand" value="<%=locals.product && product.brand || locals.oldData && oldData.brand %>">
+                    <span class="feedback">
+                        <%= locals.errors && errors.brand ? errors.brand.msg : null %> 
+                    </span>
+                </diV>
+                <diV class="form-control">
+                    <label class="input-label" for="model">Modelo:</label>
+                    <input type="text" name="model" id="model" value="<%=locals.product && product.model || locals.oldData && oldData.model %>">
+                    <span class="feedback">
+                        <%= locals.errors && errors.model ? errors.model.msg : null %> 
+                    </span>
+                </diV>
+                <diV class="form-control">
+                    <label class="input-label" for="size">Talle:</label>
+                    <input type="text" name="size" id="size" value="<%=locals.product && product.size || locals.oldData && oldData.size %>">
+                    <span class="feedback"></span>
+                </diV>
+                <diV class="form-control">
+                    <label class="input-label" for="color">Color:</label>
+                    <input type="text" name="color" id="color" value="<%=locals.product && product.color || locals.oldData && oldData.color %>">
+                    <span class="feedback"></span>
+                </diV>
+                <div class="form-control">
+                    <label class="input-label" for="rolled">Rodado:</label>
+                    <input type="number" name="rolled" id="rolled" value="<%=locals.product && product.rolled || locals.oldData && oldData.rolled %>"/>
+                    <span class="feedback"></span>
+                </div>
+                <diV class="form-control">
+                    <label class="input-label" for="frame">Estructura:</label>
+                    <input type="text" name="frame" id="frame" value="<%=locals.product && product.frame || locals.oldData && oldData.frame%>">
+                    <span class="feedback"></span>
+                </diV>
+                <diV class="form-control">
+                    <label class="input-label" for="shifter">Cambios:</label>
+                    <input type="text" name="shifter" id="shifter" value="<%=locals.product && product.shifter || locals.oldData && oldData.shifter %>">
+                    <span class="feedback"></span>
+                </diV>
+                <diV class="form-control">
+                    <label class="input-label" for="brakes">Frenos:</label>
+                    <input type="text" name="brakes" id="brakes" value="<%=locals.product && product.brakes || locals.oldData && oldData.brakes %>">
+                    <span class="feedback"></span>
+                </diV>
+                <diV class="form-control">
+                    <label class="input-label" for="suspension">Suspensión:</label>
+                    <input type="text" name="suspension" id="suspension" value="<%=locals.product && product.suspension || locals.oldData && oldData.suspension %>">
+                    <span class="feedback"></span>
+                </diV>
+                <diV class="form-control">
+                    <label class="input-label" for="cubiertas">Cubiertas:</label>
+                    <input type="text" name="cubiertas" id="cubiertas" value="<%=locals.product && product.cubiertas || locals.oldData && oldData.cubiertas %>">
+                    <span class="feedback"></span>
+                </diV>
+                <diV class="form-control">
+                    <label class="input-label" for="info">Info Adicional:</label>
+                    <textarea name="info" id="info" cols="30" rows="10" ><%=locals.product && product.info || locals.oldData && oldData.info %></textarea>
+                    <span class="feedback"></span>
+                </diV>
+                <div class="submit-form">
+                    <button type="reset">Limpiar</button>    
+                    <button type="submit">Confirmar</button>
+                </div>
+            </form>
+            
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs') %> 
+</body>
+</html>

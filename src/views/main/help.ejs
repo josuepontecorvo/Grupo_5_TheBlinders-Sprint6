@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %> 
+    <link rel="stylesheet" href="/css/ayuda-style.css">
+    <title>BiciMundo-Ayuda</title>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %> 
+    <main>
+        <section class="ayuda">
+            <article class="ayuda-funcionamiento">
+                <h2>Cómo funciona <span>Bici</span>Mundo</h2>
+                <p> En BiciMundo estamos reinventando la manera de comprar bicicletas por internet. Con nosotros estas protegido ante los engaños e intentos de estafa habituales.</p>
+                <p>¿Como lo hacemos? Garantizamos la seguridad de tus pagos, gestionamos el envio y cada bicicleta vendida es revisada por mecánicos profesionales para garantizar su funcinamiento.<b> Y ademas te asesoramos en lo que necesites</b>.</p>
+                <div class="ayuda-mecanico">   
+                    <div> 
+                        <h3>No debes preocuparte</h3>
+                        <p>Cada bicicleta vendida es revisada y garantizada por nuestro equipo de mecánicos</p>
+                    </div>
+                    <figure>
+                        <img src="/images/ayuda-mecanico-images.jpg" alt="Imagen de mecánico">
+                    </figure>
+                </div>
+                <div class="ayuda-seguridad">
+                    <figure>
+                        <img src="/images/ayuda-imac-template.jpg" alt="Imagen de imac">
+                    </figure>
+                    <div> 
+                        <h3>Seguridad en cada transacción</h3>
+                        <p>Cada operación esta 100% garantizada. Usamos el mismo método de cobro seguro que Mercado Libre. Tu dinero está siempre protegido.</p>
+                    </div>
+                </div>
+            </article>
+            <article class="ayuda-compra">
+                <h2>Como Comprar</h2>
+                <ol>
+                    <li>Podes acercarte de modo presencial a nuestro local ubicado en Av. Central 123, CABA.</li>
+                    <li>Online: Si el producto de tu interes tiene opcion de agregar al carrito, podras seleccionarlo y realizar toda la operación de manera online.</li>
+                </ol>
+                <p class="ayuda-comentario">Si el producto no tiene opción de incoporar al carrito deberas "<a href="/contacto">Consultar</a>" por él, no significa falta de stock, sino que es necesario comunicarse con nosotros, para realizar el pago y coordinar entrega, por medio del Whatsapp o haciendo click en el botón <a href="/contacto">Consultar</a>.</p>
+                <h3>Envios</h3>
+                <ul>
+                    <li>Accesorios, repuestos e indumentaria utilizamos Andreani.</li>
+                    <li>Bicicletas utilizamos Via Cargo u otro expreso a conveniencia.</li>
+                </ul>
+                <p class="ayuda-embalaje">* Embalaje sin cargo</p>
+                <h3>Costos de envios</h3>
+                <p>Los costos de envio corren por cuenta del cliente.</p>
+            </article>
+            <figure>
+                <img class="ayuda-image-bottom" src="/images/ayuda-image.jpg" alt="Imagen de ayuda">
+            </figure>
+        </section>
+    </main>
+    <%- include('../partials/footer.ejs') %> 
+</body>
+</html>
