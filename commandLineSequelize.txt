@@ -1,0 +1,14 @@
+sequelize model:generate --name Brand --attributes name:string
+sequelize model:generate --name Category --attributes name:string
+sequelize model:generate --name Type --attributes name:string
+sequelize model:generate --name Color --attributes name:string
+sequelize model:generate --name Size --attributes name:string
+sequelize model:generate --name Shift --attributes number:integer
+sequelize model:generate --name Frame --attributes name:string
+sequelize model:generate --name WheelSize --attributes number:integer
+sequelize model:generate --name Suspension --attributes type:string
+sequelize model:generate --name Brake --attributes type:string
+sequelize model:generate --name Product --attributes model:string,price:decimal,discount:integer,info:text,description:text,categoryId:integer,typeId:integer,stock:integer,stockMin:integer,stockMax:integer,colorId:integer,brandId:integer,sizeId:integer,shiftId:integer,frameId:integer,wheelSizeId:integer,suspensionId:integer,brakeId:integer
+sequelize model:generate --name Image --attributes fileName:string,productId:integer
+sequelize model:generate --name Role --attributes type:text
+sequelize model:generate --name User --attributes firstName:text,lastName:text,birthdate:date,email:text,password:text,image:text,roleId:integer
