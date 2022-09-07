@@ -1,3 +1,4 @@
+const moment = require('moment');
 'use strict';
 const {
   Model
@@ -15,13 +16,35 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    firstName: DataTypes.TEXT,
-    lastName: DataTypes.TEXT,
-    birthdate: DataTypes.DATE,
-    email: DataTypes.TEXT,
-    password: DataTypes.TEXT,
-    image: DataTypes.TEXT,
-    roleId: DataTypes.INTEGER
+    firstName: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    birthdate: {
+      type: DataTypes.DATE,
+      get() {
+        return moment(this.getDataValue('birthdate')).format("YYYY-MM-DD")},
+    },
+    email: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.TEXT,
+      defaultvalue: "default-user.png",
+    },
+    roleId: {
+      type: DataTypes.INTEGER,
+      defaultValue: 2
+    }
   }, {
     sequelize,
     modelName: 'User',

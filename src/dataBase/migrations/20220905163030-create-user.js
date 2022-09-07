@@ -27,7 +27,11 @@ module.exports = {
         type: Sequelize.TEXT
       },
       roleId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Roles",
+          key: "id"
+        }
       },
       createdAt: {
         allowNull: false,

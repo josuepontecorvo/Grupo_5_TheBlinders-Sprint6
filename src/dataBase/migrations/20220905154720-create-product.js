@@ -24,10 +24,18 @@ module.exports = {
         type: Sequelize.TEXT
       },
       categoryId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Categories",
+          key: "id"
+        }
       },
       typeId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Types",
+          key: "id"
+        }
       },
       stock: {
         type: Sequelize.INTEGER
@@ -39,28 +47,60 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       colorId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Colors",
+          key: "id"
+        }
       },
       brandId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Brands",
+          key: "id"
+        }
       },
       sizeId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Sizes",
+          key: "id"
+        }
       },
       shiftId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Shifts",
+          key: "id"
+        }
       },
       frameId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Frames",
+          key: "id"
+        }
       },
       wheelSizeId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "WheelSizes",
+          key: "id"
+        }
       },
       suspensionId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Suspensions",
+          key: "id"
+        }
       },
       brakeId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Brakes",
+          key: "id"
+        }
       },
       createdAt: {
         allowNull: false,

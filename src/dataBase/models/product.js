@@ -25,24 +25,79 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Product.init({
-    model: DataTypes.STRING,
-    price: DataTypes.DECIMAL,
-    discount: DataTypes.INTEGER,
-    info: DataTypes.TEXT,
-    description: DataTypes.TEXT,
-    categoryId: DataTypes.INTEGER,
-    typeId: DataTypes.INTEGER,
-    stock: DataTypes.INTEGER,
-    stockMin: DataTypes.INTEGER,
-    stockMax: DataTypes.INTEGER,
-    colorId: DataTypes.INTEGER,
-    brandId: DataTypes.INTEGER,
-    sizeId: DataTypes.INTEGER,
-    shiftId: DataTypes.INTEGER,
-    frameId: DataTypes.INTEGER,
-    wheelSizeId: DataTypes.INTEGER,
-    suspensionId: DataTypes.INTEGER,
-    brakeId: DataTypes.INTEGER
+    model: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
+    discount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    info: {
+      type: DataTypes.TEXT,
+      defaultValue: null
+    },
+    description: {
+      type: DataTypes.TEXT,
+      defaultValue: null
+    },
+    categoryId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    typeId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      defaultValue: null
+    },
+    stockMin: {
+      type: DataTypes.INTEGER,
+      defaultValue: null
+    },
+    stockMax: {
+      type: DataTypes.INTEGER,
+      defaultValue: null
+    },
+    colorId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    brandId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    sizeId: {
+      type: DataTypes.INTEGER,
+      defaultValue: null
+    },
+    shiftId: {
+      type: DataTypes.INTEGER,
+      defaultValue: null
+    },
+    frameId: {
+      type: DataTypes.INTEGER,
+      defaultValue: null
+    },
+    wheelSizeId: {
+      type: DataTypes.INTEGER,
+      defaultValue: null
+    },
+    suspensionId: {
+      type: DataTypes.INTEGER,
+      defaultValue: null
+    },
+    brakeId: {
+      type: DataTypes.INTEGER,
+      defaultValue: null
+    },
   }, {
     sequelize,
     modelName: 'Product',

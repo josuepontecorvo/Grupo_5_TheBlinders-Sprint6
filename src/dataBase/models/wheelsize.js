@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   WheelSize.init({
-    number: DataTypes.INTEGER
+    number: DataTypes.DECIMAL
   }, {
     sequelize,
     modelName: 'WheelSize',
