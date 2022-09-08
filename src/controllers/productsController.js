@@ -1,21 +1,32 @@
-const fs = require('fs');
-const path = require('path');
-const jsonDB = require('../model/jsonDatabase');
+const db = require('../dataBase/models');
 const  {validationResult} = require('express-validator');
-const productModel = jsonDB('products');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 controller = {
 
-    products: (req,res) => {
-        const products = productModel.readFile();
-        res.render('products/products', {products,toThousand})
+    products: async (req,res) => {
+        try {
+            const products =  await db.Product.findAll({
+                include: [db.Image]
+            });
+            res.render('products/products', {products,toThousand});
+        } catch (error) {
+            res.json({error: error.message});
+        }
+        
     },
 
-    detail: (req,res) => { 
-        const id = +req.params.id;
-        const product = productModel.find(id);    
-        res.render('products/productDetail', {product,toThousand})
+    detail: async (req,res) => {
+        try {
+            const id = +req.params.id;
+            const product = await db.Product.findByPk(id, {
+                include: [db.Brake,db.Brand,db.Image,db.WheelSize,db.Frame,db.Shift,db.Suspension]
+            });    
+            res.render('products/productDetail', {product,toThousand})
+        } catch (error) {
+            res.json({error: error.message});
+        }
+        
     },
 
     create: (req,res) => res.render('products/productCreate'),
