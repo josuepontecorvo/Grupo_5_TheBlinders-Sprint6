@@ -14,8 +14,8 @@ router.get('/', productsController.products);
 //router.get('/buscar', productsController.search);
 router.get('/detalle/:id', productsController.detail);
 //router.get('/editar/:id', productsController.edit);
-//router.get('/create',adminMiddleware , productsController.create);
-//router.post('/create',uploadFile.array('image'), productCreateValidation,  productsController.store);
+router.get('/create',adminMiddleware , productsController.create);
+router.post('/create',uploadFile.array('image'), productCreateValidation,  productsController.store);
 //router.delete('/:id', productsController.delete);
 //router.put('/:id',uploadFile.array('image'),productEditValidation , productsController.update);
 

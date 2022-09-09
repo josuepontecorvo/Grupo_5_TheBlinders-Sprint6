@@ -1,5 +1,7 @@
 const db = require('../dataBase/models');
 const  {validationResult} = require('express-validator');
+const path = require('path');
+const fs = require('fs');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 controller = {
@@ -9,7 +11,7 @@ controller = {
             const products =  await db.Product.findAll({
                 include: [db.Image]
             });
-            res.render('products/products', {products,toThousand});
+            res.render('products/products', {products,toThousand})
         } catch (error) {
             res.json({error: error.message});
         }
@@ -29,32 +31,65 @@ controller = {
         
     },
 
-    create: (req,res) => res.render('products/productCreate'),
-
-    store: (req, res) => {
-        let product = req.body;
-
-        // Validaciones de productos
-
-        const errors = validationResult(req);
-        if (errors.isEmpty()) {
-            let imagenes= []
-            for(let i = 0 ; i<req.files.length;i++) {
-            imagenes.push(req.files[i].filename)
-            }
-            product.image = imagenes.length > 0 ? imagenes : ['default-product-image.png'];
-            productModel.create(product);
-            res.redirect('/productos')
-        }else {
-            if (req.files) {
-                let {files} = req;
-            for (let i = 0 ; i< files.length; i++) {
-                fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+files[i].filename))
-            }
-            };
-            res.render('products/productCreate',{errors: errors.mapped(), oldData: req.body});
+    create: async (req,res) => {
+        try {
+            const brakes = await db.Brake.findAll();
+            const categories = await db.Category.findAll();
+            const brands = await db.Brand.findAll();
+            const colors = await db.Color.findAll();
+            const frames = await db.Frame.findAll();
+            const types = await db.Type.findAll();
+            const wheelSizes = await db.WheelSize.findAll();
+            const sizes = await db.Size.findAll();
+            const shifts = await db.Shift.findAll();
+            const suspentions = await db.Suspension.findAll();
+            //{include: [db.Brake,db.Brand,db.WheelSize,db.Frame,db.Shift,db.Suspension]}    
+            res.render('products/productCreate', {brakes,categories,brands,colors,frames,types,wheelSizes,sizes,shifts,suspentions})
+        } catch (error) {
+            res.json({error: error.message});
         }
+    },
 
+    store: async (req, res) => {
+        try {
+            let product = req.body;
+
+            // Validaciones de productos
+
+                //const errors = validationResult(req);
+            //if (errors.isEmpty()) {
+                let imagenes= []
+                const productId = await db.Product.create(product);
+                for(let i = 0 ; i<req.files.length;i++) {
+                    imagenes.push({
+                        fileName: req.files[i].filename,
+                        productId: productId.id
+                    })
+                }
+                if (imagenes.length > 0) {
+                    await db.Image.bulkCreate(imagenes)
+                    res.redirect('/productos')
+                } else {
+                    await db.Image.create([{
+                        fileName: 'default-product-image.png',
+                        productId: product.id,
+                    }])
+                    res.redirect('/productos')
+                }
+                
+                
+            //} else {
+                //if (req.files) {
+                //    let {files} = req;
+                //for (let i = 0 ; i< files.length; i++) {
+                //    fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+files[i].filename))
+                //}
+                //};
+                //res.render('products/productCreate',{errors: errors.mapped(), oldData: req.body});
+            //}
+        } catch (error) {
+            res.json({error: error.message});
+        }
         
     },
 
