@@ -14,19 +14,19 @@
                 <div class="user-image">
                     <i class="fa-solid fa-circle-user"></i>
                     <label for="user-image">Carga tú foto de perfil</label>
-                    <input type="file" name="profileimg" id="user-image" style="visibility: hidden;" multiple accept=".jpg, .png, .jpeg" />
-                    <span class="feedback"> <%= locals.errors && errors.profileimg ? errors.profileimg.msg : null %>  </span>
+                    <input type="file" name="image" id="user-image" style="visibility: hidden;" accept=".jpg, .png, .jpeg" />
+                    <span class="feedback"> <%= locals.errors && errors.image ? errors.image.msg : null %>  </span>
                 </div>
                 <div class="fill-form">
                     <diV class="user-name">
                         <label for="id">Nombre:</label>
-                        <input type="text" name="firstname" placeholder="John" required id="name" minLength="2" value="<%= locals.oldData && oldData.firstname %>">
-                        <span class="feedback"> <%= locals.errors && errors.firstname ? errors.firstname.msg : null %> </span>
+                        <input type="text" name="firstName" placeholder="John" required id="name" minLength="2" value="<%= locals.oldData && oldData.firstName %>">
+                        <span class="feedback"> <%= locals.errors && errors.firstName ? errors.firstName.msg : null %> </span>
                     </diV>
                     <div class="user-last-name">
                         <label for="last-name">Apellido:</label>
-                        <input type="text" name="lastname" placeholder="Doe" required id="last-name" minLength="2" value="<%= locals.oldData && oldData.lastname %>">
-                        <span class="feedback"> <%= locals.errors && errors.lastname ? errors.lastname.msg : null %> </span>
+                        <input type="text" name="lastName" placeholder="Doe" required id="last-name" minLength="2" value="<%= locals.oldData && oldData.lastName %>">
+                        <span class="feedback"> <%= locals.errors && errors.lastName ? errors.lastName.msg : null %> </span>
                     </div>
                     <div class="user-date-of-birth">
                         <label for="date">Fecha de nacimiento:</label>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="user-phone">
                         <label for="phone">Telefono (opcional):</label>
-                        <input type="tel" name="phonenumber" placeholder="+54 911 5678 1234" id="phone" value="<%= locals.oldData && oldData.phonenumber %>">
+                        <input type="tel" name="phoneNumber" placeholder="+54 911 5678 1234" id="phone" value="<%= locals.oldData && oldData.phonenumber %>">
                         <span class="feedback"></span>
                     </div>
                     <div class="user-terms">

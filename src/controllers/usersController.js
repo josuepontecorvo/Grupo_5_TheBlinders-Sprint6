@@ -3,198 +3,264 @@ const path = require('path');
 const fs = require('fs');
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
-const userModel = jsonDB('users');
+const { User, Role } = require('../dataBase/models');
 
 
 controlador = {
-    list: (req,res) =>{ 
-        let users = userModel.readFile();
-        users = users.map(user => {
-            delete user.password;
-            return user;
-        })   
-        res.render('users/user-index',{users});
+    list: async (req,res) =>{ 
+        try {
+
+            let users = await User.findAll();
+            users = users.map(user => {
+                delete user.password;
+                return user;
+            })   
+            res.render('users/user-index',{users});
+
+        } catch (error) {
+            res.json(error.message);
+        }
+        
     },
 
-    detail: (req,res) => { 
-        const id = +req.params.id;
-        const user = userModel.find(id);
-        delete user.password;
+    detail: async (req,res) => { 
+        try {
+            
+            const id = +req.params.id;
+            const user = await User.findByPk(id, {include : [Role]});
+            delete user.password;
+        
+            if(req.session.userLogged && user.email == req.session.userLogged.email) {
+                res.render('users/userDetail', {user});
+            } else {
+                res.redirect('/usuarios/ingresar');
+            }    
 
-        if(req.session.userLogged && user.email == req.session.userLogged.email) {
-            res.render('users/userDetail', {user});
-        } else {
-            res.redirect('/usuarios/ingresar');
-        }    
+        } catch (error) {
+            res.json(error.message);
+        }
+        
         
     },
 
     register: (req,res) => res.render('users/register'),
 
-    store: (req,res) => {
-        let user = req.body;
-        let errors = validationResult(req);
-        if (errors.isEmpty()) {
-            if (userModel.findByField('email', req.body.email)){
-                if (req.files) {
-                    let {files} = req;
-                for (let i = 0 ; i< files.length; i++) {
-                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+files[i].filename))
-                }
-                };
-                let errors = {
-                    email : {
-                        msg : 'Email existente'
+    store: async (req,res) => {
+        try {
+
+            let newUser = req.body;
+            let errors = validationResult(req);
+            // There are not validations errors 
+            if (errors.isEmpty()) {
+                // Email is unavailable (another user has the same email)
+                if (await User.findOne({where:{'email' : req.body.email}})){
+
+                    if (req.file) {
+                        fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+req.file.filename))
+                    };
+
+                    let errors = {
+                        email : {
+                            msg : 'Email existente'
+                        }
                     }
+
+                    delete req.body.password;
+                    res.render('users/register',{errors , oldData: req.body});
+                // Email is available -> create new user
+                } else {
+
+                    newUser.image = req.file?.filename ? req.file.filename : ['default-user.png'];
+                    delete newUser["user-confirm-password"];
+                    delete newUser["phoneNumber"];
+                    newUser.password = bcrypt.hashSync(newUser.password,10);
+                    await User.create({
+                        ...newUser
+                    })
+                    res.redirect('/');
+
                 }
-                delete req.body.password;
-                res.render('users/register',{errors , oldData: req.body});
+            // There are validations errors 
             } else {
-                let imagenes= []
-                for(let i = 0 ; i<req.files.length;i++) {
-                    imagenes.push(req.files[i].filename)
-                }
-                user.profileimg = imagenes.length > 0 ? imagenes : ['default-user.png'];
-                delete user["user-confirm-password"];
-                user.password = bcrypt.hashSync(user.password,10);
-                userModel.create(user);
-                res.redirect('/');
-            }
-        } else {
-            if (req.files) {
-                let {files} = req;
-            for (let i = 0 ; i< files.length; i++) {
-                fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+files[i].filename))
-            }
+
+                if (req.file) {
+                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+req.file.filename))
+                };
+
+                delete req.body.password;
+                res.render('users/register',{errors : errors.mapped(), oldData: req.body});
+
             };
-            delete req.body.password;
-            res.render('users/register',{errors : errors.mapped(), oldData: req.body});
-        };
+
+        } catch (error) {
+            res.json(error.message);
+        }
+        
     },
 
     login: (req,res) => res.render('users/login'),
 
-    loginProcess: (req,res) => {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            return res.render('users/login',{errors : errors.mapped(), oldData : req.body});
-        }
-        let user = userModel.findByField('email', req.body.username);
-        if (user && (bcrypt.compareSync(req.body.password, user.password))) {
-            delete user.password; 
-            req.session.userLogged = user;
-            if(req.body.rememberUser) {
-                res.cookie('userEmail', req.body.username, { maxAge: 1000 * 60 * 60 });
+    loginProcess: async (req,res) => {
+        try {
+
+            const errors = validationResult(req);
+            // There are validations errors
+            if(!errors.isEmpty()){
+                return res.render('users/login',{errors : errors.mapped(), oldData : req.body});
             }
-            
-            return res.redirect('/');
-        } else {
-            let errors = {
-                username : {
-                    msg: 'Credenciales inválidas'
-                },
-                password : {
-                    msg: 'Credenciales inválidas'
+            // There are not validations errors
+            let user = await User.findOne({where:{'email' : req.body.username}});
+            // User credentials are valid
+            if (user && (bcrypt.compareSync(req.body.password, user.password))) {
+
+                delete user.password; 
+                req.session.userLogged = user;
+
+                if(req.body.rememberUser) {
+                    res.cookie('userEmail', req.body.username, { maxAge: 1000 * 60 * 60 });
                 }
-            }
-            delete req.body.password;
-            return res.render('users/login',{errors , oldData : req.body});
-        };
+                
+                return res.redirect('/');
+            // User credentials are not valid
+            } else {
+
+                let errors = {
+                    username : {
+                        msg: 'Credenciales inválidas'
+                    },
+                    password : {
+                        msg: 'Credenciales inválidas'
+                    }
+                }
+
+                delete req.body.password;
+                return res.render('users/login',{errors , oldData : req.body});
+
+            };
+
+        } catch (error) {
+            res.json(error.message)
+        }
+        
     },
 
     cart: (req,res) => res.render('users/product-cart'),
 
-    edit: (req,res) => { 
-        const id = +req.params.id;
-        const user = userModel.find(id);    
-        res.render('users/userEdit',{user});
-    },
+    edit: async (req,res) => { 
 
-    update: (req,res) => {
-        let idToUpdate = req.params.id;
-        const user = userModel.find(idToUpdate);   
-        let errors = validationResult(req);
-        if (errors.isEmpty()) {
-            if (user.email !== req.body.email && userModel.findByField('email', req.body.email)) {
-                if (req.files) {
-                    let {files} = req;
-                for (let i = 0 ; i< files.length; i++) {
-                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+files[i].filename))
-                }
-                };
-                let errors = {
-                    email : {
-                        msg : 'Email existente'
-                    }
-                }
-                delete req.body.password;
-                return res.render('users/userEdit',{errors , oldData: req.body, idToUpdate, user});
-            }
+        try {
+            
+            const id = +req.params.id;
+            const user = await User.findByPk(id);    
+            res.render('users/userEdit',{user});
 
-            let dataUpdate = req.body;
-            let imagenes= []
-            for(let i = 0 ; i<req.files.length;i++) {
-                imagenes.push(req.files[i].filename)
-            }
-            dataUpdate.profileimg = imagenes.length > 0 ? imagenes : user.profileimg;
-
-            if (imagenes.length > 0 && user.profileimg) {
-                let files = user.profileimg;
-                files = files.filter(image => image != 'default-user.png')
-            for (let i = 0 ; i< files.length; i++) {
-                fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+files[i]));
-            }
-            };
-
-            if(dataUpdate.password != "") {
-                    delete dataUpdate["user-confirm-password"];
-                    let userUpdate = {
-                        id: idToUpdate,
-                        ...dataUpdate,
-                    }
-                    userUpdate.password = bcrypt.hashSync(userUpdate.password,10);
-                    userModel.update(userUpdate);
-                    res.redirect('/');
-            } else {
-                delete dataUpdate["user-confirm-password"];
-                dataUpdate.password = user.password;
-                let userUpdate = {
-                    id: idToUpdate,
-                    ...dataUpdate,
-                }
-                userModel.update(userUpdate);
-                res.redirect('/');
-            }
-        } else {
-            if (req.files) {
-                let {files} = req;
-            for (let i = 0 ; i< files.length; i++) {
-                fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+files[i].filename))
-            }
-            };
-            delete req.body.password;
-            delete user.password;
-            res.render('users/userEdit',{errors: errors.mapped(), oldData : req.body, idToUpdate, user});
+        } catch (error) {
+            res.json(error.message);
         }
-
         
     },
 
-    delete: (req,res) => {
-        let idToDelete = req.params.id;
-        let user = userModel.find(idToDelete);
-        for (let i = 0; i < user.profileimg.length; i++) {
-            let pathToImage = path.join(__dirname, '../../public/images/users/'+ user.profileimg[i]);
-            fs.unlinkSync( pathToImage );
+    update: async (req,res) => {
+
+        try {
+
+            let idToUpdate = req.params.id;
+            const userToUpdate = await User.findByPk(idToUpdate);  
+
+            let errors = validationResult(req);
+            // There are not validations errors
+            if (errors.isEmpty()) {
+                // The user changed the email and the new email is in used by another user
+                const emailVerification = await User.findOne({where: { 'email': req.body.email }})
+                if (userToUpdate.email !== req.body.email && emailVerification) {
+
+                    if (req.file) {
+                        fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+req.file.filename))
+                    };
+
+                    let errors = {
+                        email : {
+                            msg : 'Email existente'
+                        }
+                    }
+                    delete req.body.password;
+                    return res.render('users/userEdit',{errors , oldData: req.body, idToUpdate, user:userToUpdate});
+
+                }
+                // The user changed the email and the new email is not in use by another user or the user didn´t change the email.
+                let dataUpdate = req.body;
+                dataUpdate.image = req.file?.filename ? req.file.filename : userToUpdate.image;
+                // The user changed the image
+                if (userToUpdate.image != dataUpdate.image ) {
+                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+userToUpdate.image));
+                };
+                 // The user changed the password
+                if(dataUpdate.password != "") {
+
+                    delete dataUpdate["user-confirm-password"];
+                    delete dataUpdate["phoneNumber"];
+                    let userUpdate = {
+                        ...dataUpdate,
+                    }
+                    userUpdate.password = bcrypt.hashSync(userUpdate.password,10);
+                    await User.update({...userUpdate},{where: {id: idToUpdate}});
+                    delete userUpdate.password;
+                    userUpdate.id = idToUpdate
+                    req.session.userLogged = userUpdate;
+                    res.redirect('/');
+                // The user didn´t change the password        
+                } else {
+
+                    delete dataUpdate["user-confirm-password"];
+                    delete dataUpdate["phoneNumber"];
+                    dataUpdate.password = userToUpdate.password;
+                    let userUpdate = {
+                        ...dataUpdate,
+                    }
+                    await User.update({...userUpdate},{where: {id: idToUpdate}});
+                    delete userUpdate.password;
+                    userUpdate.id = idToUpdate
+                    req.session.userLogged = userUpdate;
+                    res.redirect('/');
+
+                }
+            // There are validations errors
+            } else {
+                if (req.file) {
+                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+req.file.filename))
+                };
+
+                delete req.body.password;
+                delete userToUpdate.password;
+
+                res.render('users/userEdit',{errors: errors.mapped(), oldData : req.body, idToUpdate, user:userToUpdate});
+            }
+
+        } catch (error) {
+            res.json(error.message)
         }
-        userModel.delete(idToDelete);
+        
+    },
+
+    delete: async (req,res) => {
+
+        let idToDelete = req.params.id;
+        let user = await User.findByPk(idToDelete);
+
+        let pathToImage = path.join(__dirname, '../../public/images/users/'+ user.image);
+        fs.unlinkSync( pathToImage );
+
+        await User.destroy({where:{"id": idToDelete}});
         res.redirect('/');
+
     },
 
     logout: (req,res) => {
+
         res.clearCookie('userEmail')
         req.session.destroy();
         res.redirect('/usuarios/ingresar');
+        
     },
 
 };

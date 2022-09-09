@@ -16,15 +16,15 @@
                         <a class="detalle" href="/usuarios/detalle/<%= user.id %> ">
                             <figure>
                                 <% 
-                                    let url = user.profileimg
+                                    let url = user.image
                                     if (url.indexOf('http') != -1) { 
                                 %>
-                                    <img src="<%= user.profileimg[0] %>" alt="image-destacados">
+                                    <img src="<%= user.image %>" alt="image-destacados">
                                 <% } else { %>
-                                    <img src="/images/users/<%= user.profileimg[0] %> " alt="image-destacados">
+                                    <img src="/images/users/<%= user.image%> " alt="image-user">
                                 <% } %>
                             </figure>
-                            <h3 class="destacados-products-model"><%= user.firstname +" "+ user.lastname %></h3>
+                            <h3 class="destacados-products-model"><%= user.firstName +" "+ user.lastName %></h3>
                             <p class="destacados-products-price"><%= user.birthdate %> </p>
                             <p class="destacados-products-cart">
                                 <%= user.email %> 

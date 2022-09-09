@@ -119,3 +119,10 @@ insert into Products values (1, "Wish 290 Entry", 59087, 10, null, "BICICLETA MT
 insert into Products values (2, "Frida Diva", 102056, 10, null, "BICICLETA MTB RODADO 29 VENZO FRIDA DIVA", 1, 1, null, null, null, 2, 2, null, 6, 1, 4, 3, 2, now(), now());
 insert into Products values (3, "Bullet Disc", 106399, 10, null, "BICICLETA MTB RODADO 29 SPY BULLET DISC", 1, 1, null, null, null, 3, 3, null, 2, 1, 4, 3, 2, now(), now());
 insert into Products values (4, "Amphion", 57200, 10, null, "BICICLETA MTB RODADO 27.5 VENZO AMPHION", 1, 1, null, null, null, 4, 2, null, 4, 1, 2, null, 1, now(), now());
+
+-- table Images
+
+insert into Images values (1, "bicicletaRodado29olmoWish1.jpg", 1, now(), now());
+insert into Images values (2, "bicicletaRodado29venzoFridaDiva1.jpg", 2, now(), now());
+insert into Images values (3, "bicicletaRodado29spyBulletDisc1.jpg", 3, now(), now());
+insert into Images values (4, "bicicletaRodado27venzoAmphion1.jpg", 4, now(), now());

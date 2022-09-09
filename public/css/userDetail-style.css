@@ -126,7 +126,7 @@ div.burger-menu .burger-options li {
     opacity: 0.96;
 }
 
-/*PRODUCT-DETAIL*/
+/*USER-DETAIL*/
 
 main {
     background-color: rgb(226, 224, 224);
@@ -148,6 +148,8 @@ main .detail-container .detail-column-1 {
 main .detail-column-1 .main-image {
     max-width: 100%;
     max-height: 350px;
+    display: flex;
+    justify-content: center;
     /* object-fit: contain; */
 }
 

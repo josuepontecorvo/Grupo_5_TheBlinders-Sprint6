@@ -16,11 +16,11 @@
                         
                         <a href="/usuarios/detalle/<%= isLogged.id %>">
                         
-                            <img src="/images/users/<%= isLogged.profileimg %> " 
+                            <img src="/images/users/<%= isLogged.image %> " 
                             alt="Imagen de usuario" 
                             style="border-radius: 100%; width: 30px; vertical-align:top; margin-right: 10px; position: relative; top: -3px">
 
-                            <%= isLogged.firstname %>
+                            <%= isLogged.firstName %>
 
                         </a>
                     </li>
@@ -35,7 +35,7 @@
         <div class="sign-in" id="perfil">
             <% if (locals.isLogged) { %>
                 <a href="/usuarios/detalle/<%= isLogged.id %>">
-                    <img src="/images/users/<%= isLogged.profileimg %> " alt="Imagen de usuario" style="border-radius: 100%; width: 30px; vertical-align:middle;box-shadow: 0 0 5px #fff;">
+                    <img src="/images/users/<%= isLogged.image %> " alt="Imagen de usuario" style="border-radius: 100%; width: 30px; vertical-align:middle;box-shadow: 0 0 5px #fff;">
                 </a>
                 <a class="logout" href="/usuarios/logout" style="font-size: 14px;text-shadow: none;">
                     Cerrar sesion
@@ -58,7 +58,7 @@
                 <li><a href="/nosotros">QUIENES SOMOS</a></li>
                 <li><a href="/contacto">CONTACTO</a></li>
                 <li><a href="/ayuda">AYUDA</a></li>
-                <% if (locals.isLogged && isLogged.admin) { %>
+                <% if (locals.isLogged && isLogged.roleId == 1) { %>
                     <li><a href="/productos/create">ADMIN</a></li>
                 <% } %>
             </ul>
@@ -82,7 +82,7 @@
                     <li><a href="/usuarios/ingresar">Iniciar Sesión</a></li>
                 <% } %>
                 <li><a href="/usuarios/carrito">Carrito<i class="fa-solid fa-cart-shopping"></i></a></li>
-                <% if (locals.isLogged && isLogged.admin) { %>
+                <% if (locals.isLogged && isLogged.roleId == 1) { %>
                     <li><a href="/productos/create">ADMIN</a></li>
                 <% } %>
             </ul>

@@ -12,21 +12,21 @@
             <h2>EDITA TU CUENTA</h2>
             <form action="/usuarios/editar/<%= locals.user && user.id || idToUpdate %>?_method=PUT" method="POST" enctype="multipart/form-data" class="register-form">
                 <div class="user-image">
-                    <img src="/images/users/<%= user.profileimg[0] %>  " alt="">
+                    <img src="/images/users/<%= user.image %>  " alt="">
                     <label for="user-image">Carga tú foto de perfil</label>
-                    <input type="file" name="profileimg" id="user-image" style="visibility: hidden;" multiple accept=".jpg, .png" />
-                    <span class="feedback"> <%= locals.errors && errors.profileimg ? errors.profileimg.msg : null %>  </span>
+                    <input type="file" name="image" id="user-image" style="visibility: hidden;" accept=".jpg, .png" />
+                    <span class="feedback"> <%= locals.errors && errors.image ? errors.image.msg : null %>  </span>
                 </div>
                 <div class="fill-form">
                     <diV class="user-name">
                         <label for="id">Nombre:</label>
-                        <input type="text" name="firstname" placeholder="John" required id="name" minLength="2" value="<%=locals.oldData && oldData.firstname || locals.user && user.firstname%>">
-                        <span class="feedback"> <%= locals.errors && errors.firstname ? errors.firstname.msg : null %> </span>
+                        <input type="text" name="firstName" placeholder="John" required id="name" minLength="2" value="<%=locals.oldData && oldData.firstName || locals.user && user.firstName%>">
+                        <span class="feedback"> <%= locals.errors && errors.firstName ? errors.firstName.msg : null %> </span>
                     </diV>
                     <div class="user-last-name">
                         <label for="last-name">Apellido:</label>
-                        <input type="text" name="lastname" placeholder="Doe" required id="last-name" minLength="2" value="<%=locals.oldData && oldData.lastname || locals.user && user.lastname%>">
-                        <span class="feedback"> <%= locals.errors && errors.lastname ? errors.lastname.msg : null %> </span>
+                        <input type="text" name="lastName" placeholder="Doe" required id="last-name" minLength="2" value="<%=locals.oldData && oldData.lastName || locals.user && user.lastName%>">
+                        <span class="feedback"> <%= locals.errors && errors.lastName ? errors.lastName.msg : null %> </span>
                     </div>
                     <div class="user-date-of-birth">
                         <label for="date">Fecha de nacimiento:</label>

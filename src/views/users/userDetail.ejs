@@ -12,12 +12,12 @@
             <div class="detail-column-1">
                 <div class="main-image">
                     <% 
-                        let url = user.profileimg
+                        let url = user.image
                         if (url.indexOf('http') != -1) { 
                     %>
-                        <img src="<%= user.profileimg %>" alt="image-destacados">
+                        <img src="<%= user.image %>" alt="image-destacados"/>
                     <% } else { %>
-                        <img src="/images/users/<%= user.profileimg[0] %> " alt="image-destacados">
+                        <img src="/images/users/<%= user.image %> " alt="image-destacados">
                     <% } %>
                 </div>
             </div>
@@ -25,13 +25,13 @@
                 <div>
                     <h2>Descripción</h2>
                     <hr>
-                    <h3 class="detail-modelo"><%= user.firstname + ' ' + user.lastname %> </h3>
+                    <h3 class="detail-modelo"><%= user.firstName + ' ' + user.lastName %> </h3>
                     <p class="detail-description">
                     Información:<br>
                             Fecha de Nacimiento: <%= user.birthdate %>.<br>
                             Email: <%= user.email %>.<br>
                             Contraseña: ********.<br>
-                            Telefono: <%= user.phonenumber %>.<br>
+                            Rol: <%= user.Role.type %>.<br>
                     </p>
                 </div>
                 <div class="admin-buttons">
