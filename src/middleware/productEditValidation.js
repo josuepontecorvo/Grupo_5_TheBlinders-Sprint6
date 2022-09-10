@@ -21,7 +21,7 @@ validations = [
     body('price').isFloat({min:0}).withMessage('El precio debe ser un número mayor a 0'),
     body('discount').isInt({max:100}).withMessage('El descuento debe ser un número menor a 100% '),
     body('brandId').notEmpty().withMessage('Debe ingresar la marca del producto'),
-    body('modelId').notEmpty().withMessage('Debe ingresar el modelo del producto')
+    body('model').notEmpty().withMessage('Debe ingresar el modelo del producto')
 
 ];
 

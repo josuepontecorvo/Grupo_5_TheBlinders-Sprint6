@@ -114,9 +114,9 @@
                         <% if (sizes) {%> 
                         <% sizes.forEach(size => { %> 
                             <option value="<%=size.id%>" 
-                                <% if (locals.oldData && oldData.sizeId && product.Size.name) { %> 
+                                <% if (locals.oldData && oldData.sizeId && product.Size) { %> 
                                     <%= size.id == oldData.sizeId ? "selected" : null %>
-                                <% } else if (product.Size.name) { %>
+                                <% } else if (product.Size) { %>
                                     <%= size.name == product.Size.name ? "selected" : null %>
                                 <% } %>
                                 >
