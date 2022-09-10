@@ -4,12 +4,16 @@
         <select name="categoryId">
             <% if (categories) {%> 
             <% categories.forEach(category => { %> 
-                <option value="<%=category.id%>"><%=category.name%></option>
+                <option value="<%=category.id%>" 
+                    <%= locals.oldData && oldData.categoryId == category.id ? 'selected' : null %>
+                    >
+                    <%=category.name%>
+                </option>
             <% }); %> 
             <% } %> 
         </select>
         <span class="feedback">
-            <%= locals.errors && errors.product ? errors.product.msg : null %> 
+            <%= locals.errors && errors.categoryId ? errors.categoryId.msg : null %> 
         </span>
     </div>
     <diV class="form-control">
@@ -17,12 +21,16 @@
         <select name="typeId">
             <% if (types) {%> 
             <% types.forEach(type => { %> 
-                <option value="<%=type.id%>"><%=type.name%></option>
+                <option value="<%=type.id%>" 
+                    <%= locals.oldData && oldData.typeId == type.id ? 'selected' : null %>
+                    >
+                    <%=type.name%>
+                </option>
             <% }); %> 
             <% } %> 
         </select>
         <span class="feedback">
-            <%= locals.errors && errors.type ? errors.type.msg : null %> 
+            <%= locals.errors && errors.typeId ? errors.typeId.msg : null %> 
         </span>
     </diV>
     <diV class="form-control">
@@ -58,10 +66,17 @@
         <select name="brandId">
             <% if (brands) {%> 
             <% brands.forEach(brand => { %> 
-                <option value="<%=brand.id%>"><%=brand.name%></option>
+                <option value="<%=brand.id%>" 
+                    <%= locals.oldData && oldData.brandId == brand.id ? 'selected' : null %>
+                    >
+                    <%=brand.name%>
+                </option>
             <% }); %> 
             <% } %> 
         </select>
+        <span class="feedback">
+            <%= locals.errors && errors.brandId ? errors.brandId.msg : null %>
+        </span>
     </diV>
     <diV class="form-control">
         <label class="input-label" for="model">Modelo:</label>
@@ -75,7 +90,11 @@
         <select name="sizeId">
             <% if (sizes) {%> 
             <% sizes.forEach(size => { %> 
-                <option value="<%=size.id%>"><%=size.name%></option>
+                <option value="<%=size.id%>" 
+                    <%= locals.oldData && oldData.sizeId == size.id ? 'selected' : null %>
+                    >
+                    <%=size.name%>
+                </option>
             <% }); %> 
             <% } %> 
         </select>
@@ -86,7 +105,11 @@
         <select name="colorId">
             <% if (colors) {%> 
             <% colors.forEach(color => { %> 
-                <option value="<%=color.id%>"><%=color.name%></option>
+                <option value="<%=color.id%>" 
+                    <%= locals.oldData && oldData.colorId == color.id ? 'selected' : null %>
+                    >
+                    <%=color.name%>
+                </option>
             <% }); %> 
             <% } %> 
         </select>
@@ -97,7 +120,11 @@
         <select name="wheelSizeId">
             <% if (wheelSizes) {%> 
             <% wheelSizes.forEach(size => { %> 
-                <option value="<%=size.id%>"><%=size.number%></option>
+                <option value="<%=size.id%>" 
+                    <%= locals.oldData && oldData.wheelSizeId == size.id ? 'selected' : null %>
+                    >
+                    <%=size.number%>
+                </option>
             <% }); %> 
             <% } %> 
         </select>
@@ -108,7 +135,11 @@
         <select name="frameId">
             <% if (frames) {%> 
             <% frames.forEach(frame => { %> 
-                <option value="<%=frame.id%>"><%=frame.name%></option>
+                <option value="<%=frame.id%>" 
+                    <%= locals.oldData && oldData.frameId == frame.id ? 'selected' : null %>
+                    >
+                    <%=frame.name%>
+                </option>
             <% }); %> 
             <% } %> 
         </select>
@@ -119,7 +150,11 @@
         <select name="shiftId">
             <% if (shifts) {%> 
             <% shifts.forEach(shift => { %> 
-                <option value="<%=shift.id%>"><%=shift.number%></option>
+                <option value="<%=shift.id%>" 
+                    <%= locals.oldData && oldData.shiftId == shift.id ? 'selected' : null %>
+                    >
+                    <%=shift.number%>
+                </option>
             <% }); %> 
             <% } %> 
         </select>
@@ -130,7 +165,11 @@
         <select name="brakeId">
             <% if (brakes) {%> 
             <% brakes.forEach(brake => { %> 
-                <option value="<%=brake.id%>"><%=brake.type%></option>
+                <option value="<%=brake.id%>" 
+                    <%= locals.oldData && oldData.brakeId == brake.id ? 'selected' : null %>
+                    >
+                    <%=brake.type%>
+                </option>
             <% }); %> 
             <% } %> 
         </select>
@@ -141,7 +180,11 @@
         <select name="suspensionId">
             <% if (suspentions) {%> 
             <% suspentions.forEach(suspention => { %> 
-                <option value="<%=suspention.id%>"><%=suspention.type%></option>
+                <option value="<%=suspention.id%>" 
+                    <%= locals.oldData && oldData.suspensionId == suspention.id ? 'selected' : null %>
+                    >
+                    <%=suspention.type%>
+                </option>
             <% }); %> 
             <% } %> 
         </select>
