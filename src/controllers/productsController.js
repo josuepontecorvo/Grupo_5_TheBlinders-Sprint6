@@ -126,18 +126,36 @@ controller = {
         
     },
 
-    delete: (req,res) => {
-        let idToDelete = req.params.id;
-        let product = productModel.find(idToDelete);
-        if (product.image) {
-            let files = product.image;
-            files = files.filter(image => image != 'default-product-image.png');
-        for (let i = 0 ; i< files.length; i++) {
-            fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+files[i]))
+    delete: async (req,res) => {
+        try {
+            const { id } = req.params;
+            let imagenes = await db.Image.findAll({
+                where: {productId: id}
+            });
+            if (imagenes) {
+                let files = imagenes.filter(image => image != 'default-product-image.png');
+            for (let i = 0 ; i< files.length; i++) {
+                fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+files[i]))
+            }
+            };
+            await db.Image.destroy({
+                where: {
+                    productId: id
+                }
+            }, {
+                force: true
+            });
+            await db.Product.destroy({
+                where: {
+                    id
+                }
+            }, {
+                force: true
+            });
+            res.redirect("/productos")
+        } catch (error) {
+            res.json(error.message)
         }
-        };
-        productModel.delete(idToDelete);
-        res.redirect('/productos');
     },
 
     update: async (req,res) => {
@@ -195,16 +213,30 @@ controller = {
         }
     },
     
-    filter: (req,res) => {
-        let filtro = req.query;
-        const products = productModel.readFile();
-        res.render('products/products', {products,toThousand,filtro})
+    filter: async (req,res) => {
+        try {
+            let filtro = req.query;
+            const products = await db.Product.findAll({
+                include: [db.Brake,db.Brand,db.Image,db.Frame,db.Shift,db.Category,db.Type]
+            })
+            res.render('products/products', {products,toThousand,filtro})
+        } catch (error) {
+            res.json({error: error.message});
+        }
+        
     },
 
-    search: (req,res) => {
-        let busqueda = req.query.search;
-        const products = productModel.readFile();
+    search: async (req,res) => {
+        try {
+            let busqueda = req.query.search;
+            const products = await db.Product.findAll({
+                include: [db.Brake,db.Brand,db.Image,db.Frame,db.Shift,db.Category,db.Type]
+            })
         res.render('products/products', {products,toThousand,busqueda})
+        } catch (error) {
+            res.json({error: error.message});
+        }
+        
     },
 
 };
