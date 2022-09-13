@@ -1,4 +1,4 @@
-# Grupo_5_TheBlinders-Sprint4
+# Grupo_5_TheBlinders-Sprint6
 URL: Trello --> https://trello.com/b/ig2oSh8B/grupo5the-blinders
 
 --- 
