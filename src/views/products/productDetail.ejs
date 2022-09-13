@@ -43,7 +43,7 @@
                     <button class="detail-add-cart">Agregar al carrito <i class="fa-solid fa-cart-shopping"></i></button>
                 </a>
                 <p class="detail-send-free">Envio Gratis <i class="fa-solid fa-truck-arrow-right"></i></p>
-                <% if (locals.isLogged && isLogged.admin) { %>
+                <% if (locals.isLogged && isLogged.roleId == 1) { %>
                     <div class="admin-buttons">
                     <a href="/productos/editar/<%= product.id %> ">
                         <button class="edit-button">Editar <i class="fa-solid fa-file-pen"></i></i></button>
