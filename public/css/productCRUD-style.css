@@ -200,6 +200,14 @@ main {
         border-radius: 5px;
     }
 
+    main form .form-control>select {
+        width: 100%;
+        background-color: white;
+        height: 25px;
+        padding-left: 10px;
+        border-radius: 5px;
+    }
+
     main form .form-control>textarea {
         width: 100%;
         background-color: white;
