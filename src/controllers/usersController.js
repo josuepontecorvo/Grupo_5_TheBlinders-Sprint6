@@ -251,7 +251,9 @@ controlador = {
         fs.unlinkSync( pathToImage );
 
         await User.destroy({where:{"id": idToDelete}});
-        res.redirect('/');
+        res.clearCookie('userEmail')
+        req.session.destroy();
+        res.redirect('/usuarios/ingresar');
 
     },
 
