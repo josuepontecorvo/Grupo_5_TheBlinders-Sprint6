@@ -132,7 +132,7 @@
                             </figure>
                             <h3 class="description"><%= product.description %> </h3>
                             <p class="price">$ <% 
-                                let realPrice = product.discount ? product.price * (1-product.discount/100) : product.price;
+                                let realPrice = product.discount ? product.price * (1-product.discount/100) : +product.price;
                                 realPrice = realPrice.toFixed(0);
                                 realPrice = toThousand(realPrice);
                             %>  <%= realPrice %>  </p>

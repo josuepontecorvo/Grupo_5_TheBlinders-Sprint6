@@ -35,7 +35,7 @@
                         Horquillas de suspension:<%= product.Suspension.type %><br>
                 </p>
                 <p class="detail-price">Precio: $ <% 
-                    let realPrice = product.discount ? product.price * (1-product.discount/100) : product.price;
+                    let realPrice = product.discount ? product.price * (1-product.discount/100) : +product.price;
                     realPrice = realPrice.toFixed(0);
                     realPrice = toThousand(realPrice);
                 %>  <%= realPrice %> </p>
