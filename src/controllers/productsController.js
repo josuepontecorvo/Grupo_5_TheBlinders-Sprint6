@@ -133,9 +133,9 @@ controller = {
                 where: {productId: id}
             });
             if (imagenes) {
-                let files = imagenes.filter(image => image != 'default-product-image.png');
+                let files = imagenes.filter(image => image.fileName != 'default-product-image.png');
             for (let i = 0 ; i< files.length; i++) {
-                fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+files[i]))
+                fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+files[i].fileName))
             }
             };
             await db.Image.destroy({
@@ -166,7 +166,6 @@ controller = {
             const errors = validationResult(req);
             if (errors.isEmpty()) {
 
-                
                 let dataUpdate = req.body;
                 let imagenes= []
                 const product = await db.Product.update({
@@ -183,6 +182,11 @@ controller = {
                     })
                 }
                 if (imagenes.length > 0) {
+                    const oldImages = await db.Image.findAll({where: {productId: idToUpdate}})
+                    oldImages.forEach( image => {
+                        fs.unlinkSync(path.resolve(__dirname, '../../public/images/'+image.fileName))
+                    })
+                    await db.Image.destroy({where: {productId: idToUpdate}})
                     await db.Image.bulkCreate(imagenes)
                 }
                 res.redirect('/productos')

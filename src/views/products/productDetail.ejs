@@ -15,9 +15,9 @@
                 </div>
                 <p class="detail-footer">Garantía de 12 meses</p>
                 <div class="secondary-images"> 
-                    <img src="/images/<%= product.Images[1] || "bicicletaRodado26venzoSkyline2.jpg" %>" alt="Imagen de producto">
-                    <img src="/images/<%= product.Images[2] || "bicicletaRodado26venzoSkyline2.jpg" %>" alt="Imagen de producto">
-                    <img src="/images/<%= product.Images[3] || "bicicletaRodado26venzoSkyline2.jpg" %>" alt="Imagen de Producto">
+                    <img src="/images/<%= product.Images[1]?.fileName || "bicicletaRodado26venzoSkyline2.jpg" %>" alt="Imagen de producto">
+                    <img src="/images/<%= product.Images[2]?.fileName || "bicicletaRodado26venzoSkyline2.jpg" %>" alt="Imagen de producto">
+                    <img src="/images/<%= product.Images[3]?.fileName || "bicicletaRodado26venzoSkyline2.jpg" %>" alt="Imagen de Producto">
                 </div>
             </div>
             <div class="detail-column-2">
@@ -26,13 +26,13 @@
                 <h3 class="detail-modelo"><%= product.description %> </h3>
                 <p class="detail-description">
                     Especificaciones:<br>
-                        Marca: <%= product.Brand.name %>.<br>
+                        Marca: <%= product.Brand?.name %>.<br>
                         Modelo:<%= product.model %>.<br>
-                        Rodado: <%= product.WheelSize.number %>".<br>
-                        Cuadro: <%= product.Frame.name %>.<br>
-                        Pata de cambio: <%= product.Shift.number %>.<br>
-                        Frenos: <%= product.Brake.name %>.<br>
-                        Horquillas de suspension:<%= product.Suspension.type %><br>
+                        Rodado: <%= product.WheelSize?.number %>".<br>
+                        Cuadro: <%= product.Frame?.name %>.<br>
+                        Pata de cambio: <%= product.Shift?.number %>.<br>
+                        Frenos: <%= product.Brake?.name %>.<br>
+                        Horquillas de suspension:<%= product.Suspension?.type %><br>
                 </p>
                 <p class="detail-price">Precio: $ <% 
                     let realPrice = product.discount ? product.price * (1-product.discount/100) : +product.price;

@@ -2,6 +2,7 @@
     <div class="form-control">
         <label class="input-label">Producto:</label>
         <select name="categoryId">
+            <option value="" disabled selected>- Seleccione el Producto - </option>
             <% if (categories) {%> 
             <% categories.forEach(category => { %> 
                 <option value="<%=category.id%>" 
@@ -19,6 +20,7 @@
     <diV class="form-control">
         <label class="input-label" for="type">Tipo:</label>
         <select name="typeId">
+            <option value="" disabled selected>- Seleccione el tipo - </option>
             <% if (types) {%> 
             <% types.forEach(type => { %> 
                 <option value="<%=type.id%>" 
@@ -88,6 +90,7 @@
     <diV class="form-control">
         <label class="input-label" for="size">Talle:</label>
         <select name="sizeId">
+            <option value="" disabled selected>- Seleccione el talle - </option>
             <% if (sizes) {%> 
             <% sizes.forEach(size => { %> 
                 <option value="<%=size.id%>" 
@@ -103,6 +106,7 @@
     <diV class="form-control">
         <label class="input-label" for="color">Color:</label>
         <select name="colorId">
+            <option value="" disabled selected>- Seleccione el color - </option>
             <% if (colors) {%> 
             <% colors.forEach(color => { %> 
                 <option value="<%=color.id%>" 
@@ -118,6 +122,7 @@
     <div class="form-control">
         <label class="input-label" for="rolled">Rodado:</label>
         <select name="wheelSizeId">
+            <option value="" disabled selected>- Seleccione el rodado - </option>
             <% if (wheelSizes) {%> 
             <% wheelSizes.forEach(size => { %> 
                 <option value="<%=size.id%>" 
@@ -133,6 +138,7 @@
     <diV class="form-control">
         <label class="input-label" for="frame">Estructura:</label>
         <select name="frameId">
+            <option value="" disabled selected>- Seleccione la estructura - </option>
             <% if (frames) {%> 
             <% frames.forEach(frame => { %> 
                 <option value="<%=frame.id%>" 
@@ -148,6 +154,7 @@
     <diV class="form-control">
         <label class="input-label" for="shifter">Cambios:</label>
         <select name="shiftId">
+            <option value="" disabled selected>- Seleccione la cantidad de cambios - </option>
             <% if (shifts) {%> 
             <% shifts.forEach(shift => { %> 
                 <option value="<%=shift.id%>" 
@@ -163,6 +170,7 @@
     <diV class="form-control">
         <label class="input-label" for="brakes">Frenos:</label>
         <select name="brakeId">
+            <option value="" disabled selected>- Seleccione el tipo de freno - </option>
             <% if (brakes) {%> 
             <% brakes.forEach(brake => { %> 
                 <option value="<%=brake.id%>" 
@@ -178,6 +186,7 @@
     <diV class="form-control">
         <label class="input-label" for="suspension">Suspensión:</label>
         <select name="suspensionId">
+            <option value="" disabled selected>- Seleccione la suspensión - </option>
             <% if (suspentions) {%> 
             <% suspentions.forEach(suspention => { %> 
                 <option value="<%=suspention.id%>" 

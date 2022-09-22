@@ -21,7 +21,7 @@
                                 <% if (locals.oldData && oldData.categoryId) { %>
                                     <%= category.id == oldData.categoryId ? "selected" : null %>
                                 <% } else { %>
-                                    <%= category.name == product.Category.name ? "selected" : null %>
+                                    <%= category.name == product.Category?.name ? "selected" : null %>
                                 <% } %> 
                                 >
                                 <%=category.name%>
@@ -40,7 +40,7 @@
                                 <% if (locals.oldData && oldData.typeId) { %>
                                     <%= type.id == oldData.typeId ? "selected" : null %>
                                 <% } else { %>
-                                    <%= type.name == product.Type.name ? "selected" : null %>
+                                    <%= type.name == product.Type?.name ? "selected" : null %>
                                 <% } %> 
                                 >
                                 <%=type.name%>
@@ -89,7 +89,7 @@
                                 <% if (locals.oldData && oldData.brandId) { %>
                                     <%= brand.id == oldData.brandId ? "selected" : null %>
                                 <% } else { %>
-                                    <%= brand.name == product.Brand.name ? "selected" : null %>
+                                    <%= brand.name == product.Brand?.name ? "selected" : null %>
                                 <% } %> 
                                 >
                                 <%=brand.name%>
@@ -117,7 +117,7 @@
                                 <% if (locals.oldData && oldData.sizeId && product.Size) { %> 
                                     <%= size.id == oldData.sizeId ? "selected" : null %>
                                 <% } else if (product.Size) { %>
-                                    <%= size.name == product.Size.name ? "selected" : null %>
+                                    <%= size.name == product.Size?.name ? "selected" : null %>
                                 <% } %>
                                 >
                                 <%=size.name%>
@@ -136,7 +136,7 @@
                                 <% if (locals.oldData && oldData.colorId) { %>
                                     <%= color.id == oldData.colorId ? "selected" : null %>
                                 <% } else { %>
-                                    <%= color.name == product.Color.name ? "selected" : null %>
+                                    <%= color.name == product.Color?.name ? "selected" : null %>
                                 <% } %> 
                                 >
                                 <%=color.name%>
@@ -155,7 +155,7 @@
                                 <% if (locals.oldData && oldData.wheelSizeId) { %>
                                     <%= size.id == oldData.wheelSizeId ? "selected" : null %>
                                 <% } else { %>
-                                    <%= size.number == product.WheelSize.number ? "selected" : null %>
+                                    <%= size.number == product.WheelSize?.number ? "selected" : null %>
                                 <% } %> 
                                 >
                                 <%=size.number%>
@@ -174,7 +174,7 @@
                                 <% if (locals.oldData && oldData.frameId) { %>
                                     <%= frame.id == oldData.frameId ? "selected" : null %>
                                 <% } else { %>
-                                    <%= frame.name == product.Frame.name ? "selected" : null %>
+                                    <%= frame.name == product.Frame?.name ? "selected" : null %>
                                 <% } %> 
                                 >
                                 <%=frame.name%>
@@ -193,7 +193,7 @@
                                 <% if (locals.oldData && oldData.shiftId) { %>
                                     <%= shift.id == oldData.shiftId ? "selected" : null %>
                                 <% } else { %>
-                                    <%= shift.number == product.Shift.number ? "selected" : null %>
+                                    <%= shift.number == product.Shift?.number ? "selected" : null %>
                                 <% } %> 
                                 >
                                 <%=shift.number%>
@@ -212,7 +212,7 @@
                                 <% if (locals.oldData && oldData.brakeId) { %>
                                     <%= brake.id == oldData.brakeId ? "selected" : null %>
                                 <% } else { %>
-                                    <%= brake.type == product.Brake.type ? "selected" : null %>
+                                    <%= brake.type == product.Brake?.type ? "selected" : null %>
                                 <% } %> 
                                 >
                                 <%=brake.type%>
@@ -231,7 +231,7 @@
                                 <% if (locals.oldData && oldData.suspensionId) { %>
                                     <%= suspention.id == oldData.suspensionId ? "selected" : null %>
                                 <% } else { %>
-                                    <%= suspention.type == product.Suspension.type ? "selected" : null %>
+                                    <%= suspention.type == product.Suspension?.type ? "selected" : null %>
                                 <% } %> 
                                 >
                                 <%=suspention.type%>
