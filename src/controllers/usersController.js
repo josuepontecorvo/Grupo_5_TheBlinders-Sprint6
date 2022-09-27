@@ -27,10 +27,11 @@ controlador = {
         try {
             
             const id = +req.params.id;
-            const user = await User.findByPk(id, {include : [Role]});
-            delete user.password;
+            const user = await User.findByPk(id, {include : [Role]}).then(data => data?.toJSON());
+            
         
-            if(req.session.userLogged && user.email == req.session.userLogged.email) {
+            if(req.session.userLogged && user?.email == req.session.userLogged.email) {
+                delete user.password;
                 res.render('users/userDetail', {user});
             } else {
                 res.redirect('/usuarios/ingresar');
@@ -109,7 +110,7 @@ controlador = {
                 return res.render('users/login',{errors : errors.mapped(), oldData : req.body});
             }
             // There are not validations errors
-            let user = await User.findOne({where:{'email' : req.body.username}});
+            let user = await User.findOne({where:{'email' : req.body.username}}).then(data => data?.toJSON());
             // User credentials are valid
             if (user && (bcrypt.compareSync(req.body.password, user.password))) {
 
